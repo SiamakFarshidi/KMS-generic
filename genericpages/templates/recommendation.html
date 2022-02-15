@@ -1,0 +1,563 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <title>Recommender System</title>
+    <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Gradient Able Bootstrap admin template made using Bootstrap 4. The starter version of Gradient Able is completely free for personal project." />
+    <meta name="keywords" content="flat ui, admin , Flat ui, Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="codedthemes">
+    <!-- Favicon icon -->
+    <link rel="icon" href="{% static '/images/envriLOGO.png'%}" type="image/x-icon">
+    <!-- Google font--><link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap/css/bootstrap.min.css'%}">
+    <!-- themify-icons line icon -->
+    <link rel="stylesheet" type="text/css" href="{% static '/icon/themify-icons/themify-icons.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static '/icon/font-awesome/css/font-awesome.min.css'%}">
+
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="{% static '/icon/icofont/css/icofont.css'%}">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/jquery.mCustomScrollbar.css'%}">
+
+    <style>
+       h5.titleTrimming {
+         white-space: nowrap;
+         width: 60%;
+         overflow: hidden;
+         text-overflow: ellipsis;
+       }
+
+   .show-read-more .more-text{
+       display: none;
+   }
+   </style>
+    <script
+            type="text/javascript"
+            src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"
+    ></script>
+    <style type="text/css">
+     #mynetwork {
+       width: 100%;
+       height: 100%;
+       border: 0px solid lightgray;
+     }
+   </style>
+
+</head>
+
+
+
+<body>
+
+<!-- Pre-loader start -->
+<div class="theme-loader">
+    <div class="loader-track">
+        <div class="loader-bar"></div>
+    </div>
+</div>
+<!-- Pre-loader end -->
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
+
+        <nav class="navbar header-navbar pcoded-header">
+            <div class="navbar-wrapper">
+                <div class="navbar-logo">
+                    <div class="mobile-search">
+                        <div class="header-search">
+                            <div class="main-search morphsearch-search">
+                                <div class="input-group">
+                                    <span class="input-group-addon search-close"><i class="ti-close"></i></span>
+                                    <input type="text" class="form-control" placeholder="Enter Keyword">
+                                    <span class="input-group-addon search-btn"><i class="ti-search" ></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <img class="img-fluid" src="{% static 'images/ENVRI-WHITE-LOGO.png' %}" style="width:65px;  padding:6px;margin-top:-5px;" alt="Theme-Logo" />
+                    </a>
+                    <a class="mobile-options">
+                        <i class="ti-more"></i>
+                    </a>
+                </div>
+                <div class="navbar-container container-fluid">
+
+                    <ul class="nav-left">
+                        <li>
+                            <div class="sidebar_toggle">
+                                <a href="javascript:void(0)">
+                                    <i class="ti-menu"></i></a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#!" onclick="javascript:toggleFullScreen()">
+                                <i class="ti-fullscreen"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav-right">
+                        <li class="header-notification">
+                            <a href="#!">
+                                <i class="ti-bell"></i>
+                                <span class="badge bg-c-pink"></span>
+                            </a>
+                        </li>
+                        <li class="user-profile header-notification">
+                            <a href="#!">
+                                <span>Knowledge Base</span>
+                                <i class="ti-angle-down"></i>
+                            </a>
+                            <ul class="show-notification profile-notification"  >
+                                <li><a href="https://envri-fair.lab.uvalight.net/OntoWiki/index.php" target="_blank"><i class="ti-check-box"></i> Ontowiki </a> </li>
+                                <li><a href="http://90.147.102.53/rdforms/samples/software_description.html" target="_blank"><i class="ti-check-box"></i> Software Description </a> </li>
+                                <li><a href="http://90.147.102.53/rdforms/samples/document_description.html" target="_blank"><i class="ti-check-box"></i> <span style="font-size:11pt;"> Document Description </span></a> </li>
+                                <li><a href="http://90.147.102.53/rdforms/samples/service_description.html" target="_blank"><i class="ti-check-box"></i> Service Description </a> </li>
+                                <li><a href="http://90.147.102.53/rdforms/samples/usecase_description.html" target="_blank"><i class="ti-check-box"></i> Usecase Description </a> </li>
+                                <li><a href="https://envri-fair.github.io/knowledge-base-ui/" target="_blank"><i class="ti-check-box"></i> Gap Analysis </a> </li>
+                            </ul>
+                        </li>
+
+                        <li class="user-profile header-notification">
+                            <a href="#!">
+                                <img src="{% static 'images/GuestICON.png' %}" class="img-radius" alt="User-Profile-Image">
+                                <span>Guest</span>
+                                <i class="ti-angle-down"></i>
+                            </a>
+                            <ul class="show-notification profile-notification">
+                                <li><a href="../accountManagement/login"><i class="ti-layout-sidebar-left"></i> Login </a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="pcoded-main-container">
+            <img src="{% static 'images/envri_logo_final.png' %}"
+                 alt="User-Profile-Image"
+                 style="  margin-left: auto; margin-right: auto; display: block;padding-top:2%; width:100px;">
+
+            <div class="pcoded-wrapper"
+                 style="margin-left: auto; margin-right: auto; display: block;padding:15%;padding-top:2%;">
+                <br>
+                <b>(1) User story <span id="userStoryLenKeepr"> [0/300]</span>:</b> <br><br>
+
+                <textarea rows="5" cols="5" class="form-control" id="userStory" name="userStory" maxlength="300"
+                          style="display: block;"
+                          placeholder="Enter your explanation"></textarea>
+                <br>
+                <b>(2) Workflow components:</b> <br><br>
+                <div class="input-group" style="display: block; text-align:center;">
+
+                    <div class="dropdown-primary dropdown open">
+                        <button id="Webpages" class="btn btn-outline-primary dropdown-toggle waves-effect waves-light "
+                                type="button" style="width:150px;margin-top:3px;" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="ti-world"></i>Webpages</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Webpages', 'btn btn-success dropdown-toggle waves-effect waves-light', 'Yes');">Yes</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Webpages', 'btn btn-warning dropdown-toggle waves-effect waves-light', 'Maybe');">Maybe</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Webpages', 'btn btn-danger dropdown-toggle waves-effect waves-light', 'No');">No</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-primary dropdown open">
+                        <button id="Datasets" class="btn btn-outline-primary dropdown-toggle waves-effect waves-light "
+                                type="button" style="width:150px;margin-top:3px;" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="ti-ruler-pencil"></i>Datasets</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Datasets', 'btn btn-success dropdown-toggle waves-effect waves-light', 'Yes');">Yes</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Datasets', 'btn btn-warning dropdown-toggle waves-effect waves-light', 'Maybe');">Maybe</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Datasets', 'btn btn-danger dropdown-toggle waves-effect waves-light', 'No');">No</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-primary dropdown open">
+                        <button id="APIs" class="btn btn-outline-primary dropdown-toggle waves-effect waves-light "
+                                type="button" style="width:150px;margin-top:3px;" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="ti-control-shuffle"></i>Web APIs</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('APIs', 'btn btn-success dropdown-toggle waves-effect waves-light', 'Yes');">Yes</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('APIs', 'btn btn-warning dropdown-toggle waves-effect waves-light', 'Maybe');">Maybe</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('APIs', 'btn btn-danger dropdown-toggle waves-effect waves-light', 'No');">No</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-primary dropdown open">
+                        <button id="Notebooks" class="btn btn-outline-primary dropdown-toggle waves-effect waves-light "
+                                type="button" style="width:150px;margin-top:3px;" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="ti-package"></i>Notebooks</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Notebooks', 'btn btn-success dropdown-toggle waves-effect waves-light', 'Yes');">Yes</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Notebooks', 'btn btn-warning dropdown-toggle waves-effect waves-light', 'Maybe');">Maybe</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Notebooks', 'btn btn-danger dropdown-toggle waves-effect waves-light', 'No');">No</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-primary dropdown open">
+                        <button id="Catalogs" class="btn btn-outline-primary dropdown-toggle waves-effect waves-light "
+                                type="button" style="width:150px;margin-top:3px;" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="ti-menu-alt"></i>Catalogs</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Catalogs', 'btn btn-success dropdown-toggle waves-effect waves-light', 'Yes');">Yes</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Catalogs', 'btn btn-warning dropdown-toggle waves-effect waves-light', 'Maybe');">Maybe</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Catalogs', 'btn btn-danger dropdown-toggle waves-effect waves-light', 'No');">No</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-primary dropdown open">
+                        <button id="Software"  class="btn btn-outline-primary dropdown-toggle waves-effect waves-light "
+                                type="button" style="width:150px;margin-top:3px;" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="ti-linux"></i>Software</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Software', 'btn btn-success dropdown-toggle waves-effect waves-light', 'Yes');">Yes</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Software', 'btn btn-warning dropdown-toggle waves-effect waves-light', 'Maybe');">Maybe</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#" onclick="changeMode('Software', 'btn btn-danger dropdown-toggle waves-effect waves-light', 'No');">No</a>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+                <b>(3) Evaluation:</b> <br><br>
+                <div style="text-align:center;">
+                    <button class="btn btn-primary" onclick="evaluation();">Find results for me</button>
+                </div>
+                <br>
+                <b>(4) Results:</b> <br><br>
+
+                <div class="main-body">
+                    <div class="page-wrapper" id="MessageBox">
+
+                        {%for resultItem in results %}
+                        <a href="Added"> <img src="{% static 'images/addToBasket.png' %}" style="width:25px" /> </a>
+
+
+                        <div class="page-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-header">
+
+                                            <h5 class="m-b-10 titleTrimming">
+                                                <a href="{{ resultItem.id.0 }}" target="_blank"  style="color:darkblue;">
+                                                    {% if resultItem.file_formats.0 == "application/pdf; version=1.5" %}
+                                                    <img src="{% static 'images/pdficon.png' %}" style="width:15px; left: 10px; margin-right:6px;"/>
+                                                    {% else %}
+                                                    <img src="{% static 'images/WebPageICON.png' %}" style="width:15px; left: 10px; margin-right:6px;"/>
+                                                    {% endif %}
+                                                    {%for title in resultItem.title %}
+                                                    {% if title == "file" %}
+                                                    {{ resultItem.file_formats.0 }} .
+                                                    {% elif title == "" %}
+                                                    {{ resultItem.text.0}} .
+                                                    {% else %}
+                                                    {{title}}
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </a>
+                                            </h5>
+                                            <div class="card-header-right">
+                                                <ul class="list-unstyled card-option">
+                                                    <li><i class="fa fa-chevron-left"></i></li>
+                                                    <li><i class="fa fa-window-maximize full-card"></i></li>
+                                                    <li><i class="fa fa-minus minimize-card"></i></li>
+                                                    <li><i class="fa fa-refresh reload-card"></i></li>
+                                                    <li><i class="fa fa-times close-card"></i></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="card-block">
+                                            <div style="color:silver; text-decoration:italic; font-size:tiny; text-align: left; width:100%;">
+                                                {{ resultItem.modification_date.0 }}
+                                            </div>
+                                            <br>
+                                            <p class="show-read-more" style="font-size:small;">
+                                                {%for text in resultItem.organizations %}
+                                                {{ text }} .
+                                                {% endfor %}
+
+                                                {%for text in resultItem.text %}
+                                                {{ text }} .
+                                                {% endfor %}
+
+                                            </p>
+                                            <ul class="breadcrumb-title b-t-default p-t-10">
+                                                <li class="breadcrumb-item"><a href="#!">
+                                                    {% if resultItem.ResearchInfrastructure.0 == "SeaDataNet" %}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/SeaDataNet.jpg' %}" style="width:50px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "ICOS"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/ICOS.jpg' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "LifeWatch"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/LifeWatchERIC.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "AnaEE"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/anaee.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "AQUACOSM"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/AQUACOSM.jpg' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "ARISE"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/arise.jpg' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "DANUBIUS-RI"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/DANUBIUS-RI.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "DiSSCo"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/DISSCO.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "EISCAT_3D"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/EISCAT3D.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "eLTER RI"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/elterRI.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "EMBRC"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/EMBRC.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "EMSO"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/EMSOERIC.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "EMPHASIS"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/EMPHASIS.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "EPOS"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/EPOS.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "EUFAR"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/EUFAR.jpg' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "Euro-Argo ERIC"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/euroArgo.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "EUROFLEETS+"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/Eurofleets.jpg' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "EuroGOOS"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/EuroGOOS.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "EUROCHAMP"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/EUROCHAMP.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "HEMERA"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/Hemera.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "IAGOS"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/IAGOSERI.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "INTERACT"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/INTERACT.jpg' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "IS-ENES"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/ISENES.png' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "JERICO-RI"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/JERICO.jpg' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "SeaDataNet"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/SeaDataNet.jpg' %}" style="width:70px" />
+
+                                                    {% elif resultItem.ResearchInfrastructure.0 == "SIOS"%}
+                                                    <img src="{% static 'images/ENVRI-Collection/RIs/sios.png' %}" style="width:70px" />
+                                                    {% endif %}
+                                                </a>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div style="text-align:center; margin-bottom:40px;">
+                        {%for page in page_range %}
+                        {% if page == cur_page %}
+                        <input type="button" class="btn btn-grd-primary" style="font-weight:bold; width:30px; padding:5px;" value="{{ page }}">
+                        {% else %}
+                        <input type="button" class="btn btn-primary btn-outline-primary" style="font-weight:bold; width:30px; padding:5px;" value="{{ page }}" onclick="btnPage({{ page }});">
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="{% static 'js/jquery/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery-ui/jquery-ui.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/popper.js/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- jquery slimscroll js -->
+<script type="text/javascript" src="{% static 'js/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
+<!-- modernizr js -->
+<script type="text/javascript" src="{% static 'js/modernizr/modernizr.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/modernizr/css-scrollbars.js' %}"></script>
+
+<!-- Custom js -->
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/pcoded.min.js' %}"></script>
+<script src="{% static 'js/vartical-demo.js' %}"></script>
+<script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+<script>
+
+$("#userStory").on("change keyup paste", function() {
+    document.getElementById("userStoryLenKeepr").innerText='['+$(this).val().length+'/300]';
+});
+
+//---------------------------------------------------------------------
+var Requirements={
+   Description:"None",
+   Webpages:"Unknown",
+   Datasets:"Unknown",
+   APIs:"Unknown",
+   Notebooks:"Unknown",
+   Catalogs:"Unknown",
+   Software:"Unknown",
+}
+
+
+init();
+
+//---------------------------------------------------------------------
+function init(){
+
+    const queryString = window.location.search;
+    const parameters = new URLSearchParams(queryString);
+
+    const Description = parameters.get('Description');
+
+    for (var key in Requirements){
+
+       param=parameters.get(key);
+
+       Requirements[key]=param;
+
+       var value="Unknown";
+
+       if(param=='Yes'){
+           value= 'btn btn-success dropdown-toggle waves-effect waves-light';
+       }
+       else if(param=='Maybe'){
+           value= 'btn btn-warning dropdown-toggle waves-effect waves-light';
+       }
+       else if(param=='No'){
+           value= 'btn btn-danger dropdown-toggle waves-effect waves-light';
+       }
+       else{
+            value= 'btn btn-outline-primary dropdown-toggle waves-effect waves-light';
+       }
+       $('#'+key).attr('class', value);
+   }
+   Requirements['Description']=Description;
+   document.getElementById("userStory").value=Description;
+
+   document.getElementById("userStoryLenKeepr").innerText='['+document.getElementById("userStory").textLength+'/300]';
+}
+//---------------------------------------------------------------------
+function evaluation(){
+  Requirements['Description']=document.getElementById("userStory").value;
+  var queryParams = new URLSearchParams(window.location.search);
+  for (var key in Requirements){
+     var value = Requirements[key];
+     // Set new or modify existing parameter value.
+     queryParams.set(key, value);
+  }
+  window.location.replace("../genericpages/genericpages?"+queryParams.toString());
+}
+//---------------------------------------------------------------------
+function changeMode(btn, value, req){
+   $('#'+btn).attr('class', value);
+   Requirements[btn]=req;
+}
+//---------------------------------------------------------------------
+function reset(){
+   document.getElementById('searchbox2').value = "";
+   document.getElementById("searchbox2").focus();
+}
+//---------------------------------------------------------------------
+function search(searchBoxNum){
+   var searchValue =""
+   if (searchBoxNum==1){
+       searchValue = document.getElementById('searchbox1').value;
+   }
+   else{
+       searchValue = document.getElementById('searchbox2').value;
+   }
+   sessionStorage.setItem("searchValue", searchValue);
+
+   if(searchValue===""){
+       document.getElementById('MessageBox').innerText= "Please enter at least one keyword, otherwise, I cannot help you!";
+   }
+   else{
+       // Construct URLSearchParams object instance from current URL querystring.
+       var queryParams = new URLSearchParams(window.location.search);
+       // Set new or modify existing parameter value.
+       queryParams.set("term", searchValue);
+       queryParams.set("page", 1);
+       // Replace current querystring with the new one.
+       window.location.replace("../webSearch/genericsearch?"+queryParams.toString());
+
+   }
+}
+//---------------------------------------------------------------------
+$(document).ready(function(){
+   var maxLength = 500;
+   $(".show-read-more").each(function(){
+       var myStr = $(this).html();
+       if($.trim(myStr).length > maxLength){
+           var newStr = myStr.substring(0, maxLength);
+           var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+           $(this).empty().html(newStr);
+           $(this).append(' <a href="javascript:void(0);" class="read-more">[+]</a>');
+           $(this).append('<span class="more-text">' + removedStr + '</span>');
+       }
+   });
+   $(".read-more").click(function(){
+       $(this).siblings(".more-text").contents().unwrap();
+       $(this).remove();
+   });
+});
+
+//---------------------------------------------------------------------
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

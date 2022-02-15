@@ -1,0 +1,54 @@
+    title_txt=[]
+    organization_ss=[]
+    created_ss=[]
+    content_type_ss=[]
+    file_modified_dt=[]
+    author_ss=[]
+    producer_ss=[]
+    language_s=[]
+    filename_extension_s=[]
+    person_ss=[]
+    location_ss=[]
+    id=[]
+    dc_format_ss=[]
+    File_Size_ss=[]
+    _text_=[]
+
+
+    for doc in ijson.parse(open(libpath)):
+        if len(doc) == 3:
+            if (doc[2]!="_version_"):
+                if not(type(doc[2]) == type(None) and type(doc[2]) == int ) and ("title_txt" in doc[2]):
+                    txt=textCleansing(doc[2])
+                    if txt and txt not in title_txt:
+                        title_txt.append(txt)
+            else:
+                print(title_txt)
+                title_txt.clear()
+                organization_ss.clear()
+                created_ss.clear()
+                content_type_ss.clear()
+                file_modified_dt.clear()
+                author_ss.clear()
+                producer_ss.clear()
+                language_s.clear()
+                filename_extension_s.clear()
+                person_ss.clear()
+                location_ss.clear()
+                id.clear()
+                dc_format_ss.clear()
+                File_Size_ss.clear()
+                _text_.clear()
+
+
+
+
+
+
+
+
+
+
+
+
+

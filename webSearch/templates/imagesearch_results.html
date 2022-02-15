@@ -1,0 +1,706 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <title>Image Search</title>
+    <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Gradient Able Bootstrap admin template made using Bootstrap 4. The starter version of Gradient Able is completely free for personal project." />
+    <meta name="keywords" content="flat ui, admin , Flat ui, Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="codedthemes">
+    <!-- Favicon icon -->
+    <link rel="icon" href="{% static '/images/envriLOGO.png'%}" type="image/x-icon">
+    <!-- Google font--><link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap/css/bootstrap.min.css'%}">
+    <!-- themify-icons line icon -->
+    <link rel="stylesheet" type="text/css" href="{% static '/icon/themify-icons/themify-icons.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static '/icon/font-awesome/css/font-awesome.min.css'%}">
+
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="{% static '/icon/icofont/css/icofont.css'%}">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/jquery.mCustomScrollbar.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static '/starRating/starability-minified/starability-all.min.css'%}"/>
+
+    <style>
+        h5.titleTrimming {
+          white-space: nowrap;
+          width: 60%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .imgscreen{
+            max-width:200px;
+            padding:2px;
+            max-height:200px;
+
+        }
+        .imageTitle{
+            text-align:left;
+            display:inline-block;
+            width:200px;
+            height:60px;
+            word-wrap: break-word;
+            font-size:8pt;
+            padding:5px;
+            color:#1C2833;
+            background-color:#79BAEC;
+        }
+        .imageFrame{
+            text-align:center;
+            width:200px;
+            height:200px;
+            word-wrap: break-word;
+            font-size:8pt;
+            color:#1C2833;
+            vertical-align: middle;
+            margin-bottom:10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .imageAnchor{
+            background-color: #82CAFF;
+            display:inline-block;
+            margin-bottom:5px;
+            opacity: 0.75;
+            width:200px;
+            vertical-align: bottom;
+            height:259px;
+        }
+        .imageAnchor:hover{
+            opacity: 1.0;
+            background-color: #5CB3FF;
+        }
+
+    .show-read-more .more-text{
+        display: none;
+    }
+
+</style>
+
+    <link rel="stylesheet" href="{% static '/notification/style.css'%}" />
+    <script src="{% static '/notification/cute-alert.js'%}"></script>
+</head>
+
+
+
+<body>
+<!-- Pre-loader start -->
+<div class="theme-loader">
+    <div class="loader-track">
+        <div class="loader-bar"></div>
+    </div>
+</div>
+<!-- Pre-loader end -->
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
+
+        <nav class="navbar header-navbar pcoded-header">
+            <div class="navbar-wrapper">
+                <div class="navbar-logo">
+                    <a class="mobile-menu" id="mobile-collapse" href="#!">
+                        <i class="ti-menu"></i>
+                    </a>
+                    <div class="mobile-search">
+                        <div class="header-search">
+                            <div class="main-search morphsearch-search">
+                                <div class="input-group">
+                                    <span class="input-group-addon search-close"><i class="ti-close"></i></span>
+                                    <input type="text" class="form-control" placeholder="Enter Keyword">
+                                    <span class="input-group-addon search-btn"><i class="ti-search" ></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="../genericpages/genericpages?page=home">
+                        <img class="img-fluid" src="{% static 'images/ENVRI-WHITE-LOGO.png' %}" style="width:65px;  padding:6px;margin-top:-5px;" alt="Theme-Logo" />
+                    </a>
+                    <a class="mobile-options">
+                        <i class="ti-more"></i>
+                    </a>
+                </div>
+
+                <div class="navbar-container container-fluid">
+                    <ul class="nav-left">
+                        <li>
+                            <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+                        </li>
+                        <li class="header-search">
+                            <div class="main-search morphsearch-search">
+                                <div class="input-group">
+                                    <span class="input-group-addon search-close"><i class="ti-close"></i></span>
+                                    <input type="text" class="form-control" id="searchbox1" name="searchbox1" onchange="search(1);">
+                                    <span class="input-group-addon search-btn" ><i class="ti-search"></i></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#!" onclick="javascript:toggleFullScreen()">
+                                <i class="ti-fullscreen"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav-right">
+                        <li class="header-notification">
+                            <a href="#!">
+                                <i style="font-size:15pt; " class="ti-shopping-cart"></i>
+                                <span style="display: inline-block;font-size:10pt;font-weight:bold;"> <sup><span id="MyCartCount" >100</span></sup>  </span>
+                            </a>
+                            <ul class="show-notification" id="MyCart">
+                                <li>
+                                    <a href="#" onclick="">
+                                        <h6 style="color:blue;"><span class="btn btn-primary btn-icon" style="font-size:15pt; padding:0px; padding-top:4px; padding-left:2px; height:30px;width:30px; text-align:center; margin-right:5px; margin-left:-10px;"><i  class="ti-cloud-down"></i></span>
+                                        My Basket</h6>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="user-profile header-notification">
+                            <a href="#!">
+                                <img src="{% static 'images/GuestICON.png' %}" class="img-radius" alt="User-Profile-Image">
+                                <span>Guest</span>
+                                <i class="ti-angle-down"></i>
+                            </a>
+                            <ul class="show-notification profile-notification">
+                                <li><a href="../accountManagement/login"><i class="ti-layout-sidebar-left"></i> Login </a> </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <nav class="pcoded-navbar">
+                    <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                    <div class="pcoded-inner-navbar main-menu">
+                        <div class="pcoded-search">
+                            <span class="searchbar-toggle">  </span>
+                            <div class="pcoded-search-box ">
+                                <input type="text" placeholder="Search" id="searchbox2" name="searchbox2" onchange="search(2);">
+                                <span class="search-icon" ><i class="ti-search" aria-hidden="true" onclick="search(2);"></i></span>
+                            </div>
+                        </div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Search Space</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                <a href="../webSearch/genericsearch?term={{ searchTerm }}&page=1" >
+                                    <span class="pcoded-micon"><i class="ti-world"></i><b>D</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Webpages</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="../dataset_elastic/genericsearch?term={{ searchTerm }}&page=1"  >
+                                    <span class="pcoded-micon"><i class="ti-ruler-pencil"></i></span>
+                                    <span class="pcoded-mtext"  data-i18n="nav.dash.main">Datasets</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="../webAPI/genericsearch?term={{ searchTerm }}&page=1"  >
+                                    <span class="pcoded-micon"><i class="ti-control-shuffle"></i></span>
+                                    <span class="pcoded-mtext"  data-i18n="nav.dash.main">Web APIs</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="../notebookSearch/genericsearch?term={{ searchTerm }}&page=1" >
+                                    <span class="pcoded-micon"><i class="ti-package"></i></span>
+                                    <span class="pcoded-mtext"  data-i18n="nav.dash.main">Notebooks</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li  class="active pcoded-hasmenu">
+                                <a href="javascript:void(0)" >
+                                    <span class="pcoded-micon"><i class="ti-gallery"></i></span>
+                                    <span class="pcoded-mtext"  data-i18n="nav.dash.main">Images</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    {% if facets.ResearchInfrastructure %}
+                                    <span style="font-weight:bold; padding:5px; color:darkblue; font-size:10pt;">
+                                             Research Infrastructures:
+                                         </span>
+                                    {% endif %}
+                                    {%for facet in facets.ResearchInfrastructure%}
+                                    <li class=" " >
+                                        <a href="#"  onclick="facetSearch('researchInfrastructure.acronym','{{facet.key}}');">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">
+                                                    {{ facet.key|truncatechars:15 }}
+                                                    ({{ facet.doc_count }})
+                                                </span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                    {% if facets.locations %}
+                                    <span style="font-weight:bold; padding:5px; color:darkblue; font-size:10pt;">
+                                             Locations:
+                                         </span>
+                                    {% endif %}
+                                    {%for facet in facets.locations %}
+                                    <li class=" " >
+                                        <a href="#"  onclick="facetSearch('locations','{{facet.key}}');">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">
+                                                    {{ facet.key|truncatechars:15 }}
+                                                    ({{ facet.doc_count }})
+                                                </span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                    {% if facets.workOfArt %}
+                                    <span style="font-weight:bold; padding:5px; color:darkblue; font-size:10pt;">
+                                            Context:
+                                         </span>
+                                    {% endif %}
+                                    {%for facet in facets.workOfArt %}
+                                    <li class=" " >
+                                        <a href="#" onclick="facetSearch('workOfArt','{{facet.key}}');">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">
+                                                    {{ facet.key|truncatechars:15 }}
+                                                    ({{ facet.doc_count }})
+                                                </span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                    {% if facets.organizations %}
+                                    <span style="font-weight:bold; padding:5px; color:darkblue; font-size:10pt;">
+                                             Organizations:
+                                         </span>
+                                    {% endif %}
+                                    {%for facet in facets.organizations %}
+                                    <li class=" ">
+                                        <a href="#" onclick="facetSearch('organizations','{{facet.key}}');">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">
+                                                    {{ facet.key|truncatechars:15 }}
+                                                    ({{ facet.doc_count }})
+                                                </span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                    {% if facets.people %}
+                                    <span style="font-weight:bold; padding:5px; color:darkblue; font-size:10pt;">
+                                             People:
+                                         </span>
+                                    {% endif %}
+                                    {%for facet in facets.people %}
+                                    <li class=" ">
+                                        <a href="#" onclick="facetSearch('people','{{facet.key}}');">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">
+                                                    {{ facet.key|truncatechars:15 }}
+                                                    ({{ facet.doc_count }})
+                                                </span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+
+                                    {% if facets.products %}
+                                    <span style="font-weight:bold; padding:5px; color:darkblue; font-size:10pt;">
+                                             Products:
+                                         </span>
+                                    {% endif %}
+                                    {%for facet in facets.products %}
+                                    <li class=" ">
+                                        <a href="#" onclick="facetSearch('products','{{facet.key}}');">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">
+                                                    {{ facet.key|truncatechars:15 }}
+                                                    ({{ facet.doc_count }})
+                                                </span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                    {% if facets.files %}
+                                    <span style="font-weight:bold; padding:5px; color:darkblue; font-size:10pt;">
+                                             File extensions:
+                                         </span>
+                                    {% endif %}
+                                    {%for facet in facets.files %}
+                                    <li class=" ">
+                                        <a href="#" onclick="facetSearch('files.extension','{{facet.key}}');">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">
+                                                    {{ facet.key|truncatechars:15 }}
+                                                    ({{ facet.doc_count }})
+                                                </span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Visualization</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                <a href="../genericpages/genericpages?page=graphV&term={{ searchTerm }}" target="_blank" >
+                                    <span class="pcoded-micon"><i class="ti-vector"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Graph based</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../genericpages/genericpages?page=pieChart&term={{ searchTerm }}">
+                                    <span class="pcoded-micon"><i class="ti-pie-chart"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Pie chart</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+
+                        </ul>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Info</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                <a href="../genericpages/genericpages?page=publications&term={{ searchTerm }}" >
+                                    <span class="pcoded-micon"><i class="ti-write"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Publications</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../genericpages/genericpages?page=RnD&term={{ searchTerm }}" >
+                                    <span class="pcoded-micon"><i class="ti-user"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">R&amp;D team</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="map-google.html" >
+                                    <span class="pcoded-micon"><i class="ti-comments"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Feedback</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <div class="main-body">
+                            <div class="page-wrapper" id="MessageBox">
+                                    <div class="page-body" style="text-align:center;">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+
+                                                <div style="width:100%; text-align:left;">
+                                                    <script>sessionStorage.setItem("searchValue", "{{searchTerm}}"); </script>
+                                                    {% if NumberOfHits == 0 %}
+                                                        I couldn't find <b>anything</b> based on <b>"{{searchTerm}}"</b> for you!
+                                                        <br>
+                                                        {% if suggestedSearchTerm != "" %}
+                                                        Did you mean:
+                                                            <b><a href="../webSearch/genericsearch?term={{ suggestedSearchTerm }}&page=1&searchtype=imagesearch">{{ suggestedSearchTerm }}</a></b>
+                                                        {% endif %}
+                                                        <script>
+                                                            //sessionStorage.setItem("SearchFailed","Yes");
+                                                            sessionStorage.setItem("searchValue", "");
+                                                        </script>
+                                                    {% endif %}
+                                                    <a style="color:blue;font-size:xx-small;" href="#" onclick="sendFeedback('images', '{{searchTerm}}', 'guestUser');"> (Feedback)</a>
+                                                </div>
+                                                <br>
+                                                <br>
+
+                                                <script>
+                                                    if (sessionStorage.getItem("SearchFailed")=="Yes"){
+                                                        cuteAlert({
+                                                          type: "info",
+                                                          title: "No results found",
+                                                          message: "I coudn't find anything for you! <br> Please revise your search term.",
+                                                          buttonText: "Okay"
+                                                        }).then(() => {
+                                                          // do something
+                                                        });
+                                                    }
+                                                    sessionStorage.setItem("SearchFailed","No");
+                                                </script>
+
+                                                {%for resultItem in lstImageURL %}
+                                                <a class="imageAnchor" href="{{ resultItem.imageWebpage }}" target="_blank" id="ID{{resultItem.filename}}">
+                                                    <span>
+                                                           <span class="imageTitle">
+                                                                <b>Title:</b> {{ resultItem.filename |slice:":22"}} <br>
+                                                                <b>Type:</b> {{ resultItem.extension |slice:":6"}} <br>
+                                                                <b>Source:</b> {{ resultItem.ResearchInfrastructure.acronym }} <br>
+                                                            </span>
+                                                            <span class="imageFrame">
+                                                            <img  onerror="this.style.display='none'; document.getElementById('ID{{resultItem.filename}}').remove();"
+                                                                  class="imgscreen" src="{{ resultItem.imageURL }}"><br>
+                                                            </span>
+                                                    </span>
+                                                </a>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div style="text-align:center; margin-bottom:40px;">
+                                {%for page in page_range %}
+                                    {% if page == cur_page %}
+                                        <input type="button" class="btn btn-grd-primary" style="font-weight:bold; width:30px; padding:5px;" value="{{ page }}">
+                                    {% else %}
+                                        <input type="button" class="btn btn-primary btn-outline-primary" style="font-weight:bold; width:30px; padding:5px;" value="{{ page }}" onclick="btnPage({{ page }});">
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+
+
+                        <div id="styleSelector">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% csrf_token %}
+
+<script type="text/javascript" src="{% static 'js/jquery/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery-ui/jquery-ui.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/popper.js/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- jquery slimscroll js -->
+<script type="text/javascript" src="{% static 'js/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
+<!-- modernizr js -->
+<script type="text/javascript" src="{% static 'js/modernizr/modernizr.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/modernizr/css-scrollbars.js' %}"></script>
+
+<!-- Custom js -->
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/pcoded.min.js' %}"></script>
+<script src="{% static 'js/vartical-demo.js' %}"></script>
+<script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+<script>
+//---------------------------------------------------------------------
+function clearSearchBoxes(){
+    sessionStorage.setItem("searchValue", "");
+}
+//---------------------------------------------------------------------
+function facetSearch(facet,filter){
+    // Construct URLSearchParams object instance from current URL querystring.
+    var queryParams = new URLSearchParams(window.location.search);
+    // Set new or modify existing parameter value.
+    queryParams.set("filter", filter);
+    queryParams.set("facet", facet);
+    queryParams.set("page", 1);
+    // Replace current querystring with the new one.
+    history.replaceState(null, null, "?"+queryParams.toString());
+    location.reload();
+}
+//---------------------------------------------------------------------
+
+function btnPage(page){
+    // Construct URLSearchParams object instance from current URL querystring.
+    var queryParams = new URLSearchParams(window.location.search);
+    // Set new or modify existing parameter value.
+    queryParams.set("page", page);
+    // Replace current querystring with the new one.
+    history.replaceState(null, null, "?"+queryParams.toString());
+    location.reload();
+}
+//---------------------------------------------------------------------
+function search(searchBoxNum){
+    var searchValue =""
+    if (searchBoxNum==1){
+        searchValue = document.getElementById('searchbox1').value;
+    }
+    else{
+        searchValue = document.getElementById('searchbox2').value;
+    }
+    sessionStorage.setItem("searchValue", searchValue);
+
+    if(searchValue===""){
+        document.getElementById('MessageBox').innerText= "Please enter at least one keyword, otherwise, I cannot help you!";
+    }
+    else{
+        // Construct URLSearchParams object instance from current URL querystring.
+        var queryParams = new URLSearchParams(window.location.search);
+        // Set new or modify existing parameter value.
+        queryParams.set("term", searchValue);
+        queryParams.set("page", 1);
+        // Replace current querystring with the new one.
+        history.replaceState(null, null, "?"+queryParams.toString());
+        location.reload();
+    }
+}
+//--------------------------------------------------------------------- Iniitialization
+document.getElementById('searchbox1').value = sessionStorage.getItem("searchValue");
+document.getElementById('searchbox2').value = sessionStorage.getItem("searchValue");
+cnt=document.querySelectorAll("#MyCart li").length-1;
+$('#MyCartCount').text(cnt);
+//---------------------------------------------------------------------
+$(document).ready(function(){
+    var maxLength = 2000;
+    $(".show-read-more").each(function(){
+        var myStr = $(this).html();
+        if($.trim(myStr).length > maxLength){
+            var newStr = myStr.substring(0, maxLength);
+            var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+            $(this).empty().html(newStr);
+            $(this).append(' <a href="javascript:void(0);" class="read-more">[+]</a>');
+            $(this).append('<span class="more-text">' + removedStr + '</span>');
+        }
+    });
+    $(".read-more").click(function(){
+        $(this).siblings(".more-text").contents().unwrap();
+        $(this).remove();
+    });
+});
+//---------------------------------------------------------------------
+// https://docs.djangoproject.com/en/3.2/ref/csrf/#acquiring-the-token-if-csrf-use-sessions-and-csrf-cookie-httponly-are-false
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== "") {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      // Does this cookie string begin with the name we want?
+      if (cookie.substring(0, name.length + 1) === (name + "=")) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+ }
+//---------------------------------------------------------------------
+
+function downloadCart(){
+  newEntitiy={'operation':'download'};
+
+  $.ajax({
+    url: '../webSearch/downloadCart',
+    type: "POST",
+    dataType: "json",
+    data: JSON.stringify(newEntitiy),
+  headers: {
+    "X-Requested-With": "XMLHttpRequest",
+    "X-CSRFToken": getCookie("csrftoken"),  // don't forget to include the 'getCookie' function
+  },
+    success: (data) => {
+      console.log(data);
+      modifyCart(data);
+    },
+    error: (error) => {
+      console.log(error);
+    }
+  });
+
+}
+
+function modifyBasket(operation,type, title, url, id){
+
+  if (title.length>35){
+    title=title.substring(1, 35)+"...";
+  }
+
+
+  if (operation=='add'){
+      id = 'id' + (new Date()).getTime();
+  }
+  newEntitiy={'operation':operation,'type':type,'title':title,'url':url,'id':id };
+  $.ajax({
+    url: '../webSearch/addToBasket',
+    type: "POST",
+    dataType: "json",
+    data: JSON.stringify(newEntitiy),
+  headers: {
+    "X-Requested-With": "XMLHttpRequest",
+    "X-CSRFToken": getCookie("csrftoken"),  // don't forget to include the 'getCookie' function
+  },
+    success: (data) => {
+      console.log(data);
+      modifyCart(data);
+    },
+    error: (error) => {
+      console.log(error);
+    }
+  });
+}
+
+function modifyCart(data) {
+  if(data['operation']=='add'){
+      var ul = document.getElementById("MyCart");
+      var li = document.createElement("li");
+      var icon="";
+      if(data['type']=='Webpages'){
+        icon='<i style="font-size:10pt; font-weight: bold; padding-right:5px;" class="ti-world"></i>';
+      }
+      else if(data['type']=='Datasets'){
+        icon='<i style="font-size:10pt; font-weight: bold; padding-right:5px;" class="ti-ruler-pencil"></i>';
+      }
+      else if(data['type']=='WebAPIs'){
+        icon='<i style="font-size:10pt; font-weight: bold; padding-right:5px;" class="ti-control-shuffle"></i>';
+      }
+      else if(data['type']=='Notebooks'){
+        icon='<i style="font-size:10pt; font-weight: bold; padding-right:5px;" class="ti-package"></i>';
+      }
+      li.innerHTML= '<div class="media">'+
+                        icon+
+                        '<div class="media-body">'+
+                            '<h5 class="notification-user"><a target="_blank" href="'+data['url']+'">'+data['title']+'</a> </h5>'+
+                         '</div>'+
+                         '<a href="#" onclick="modifyBasket(&quot;delete&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;'+data['id']+'&quot;);"'+
+                           'style="font-size:8pt;  display:inline-block;"> <i class="ti-close"></i>'+
+                         '</a>'+
+                    '</div>';
+      li.setAttribute("id", data['id']); // added line
+      ul.appendChild(li);
+  }
+  else if(data['operation']=='delete'){
+      $('#'+data['id']).remove();
+  }
+
+  cnt=document.querySelectorAll("#MyCart li").length-1;
+  $('#MyCartCount').text(cnt);
+}
+{{functionList|safe}}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="envri">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/DSS/index_files/envri.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,3569 @@
+{
+  "sios": {
+    "seed": "https://sios-svalbard.org/metsis/search",
+    "permitted_urls_rules": ["/metsis/"],
+    "denied_urls_rules": [],
+    "keep_parameters":"False",
+    "page_counter":[
+    ],
+    "equal_crawled_features":[
+      "url"
+    ],
+    "decision_model": "datasettest",
+    "features": {
+      "title": {}
+    }
+  },
+  "lifewatch": {
+    "seed": "https://metadatacatalogue.lifewatch.eu/srv/eng/catalog.search#/search?facet.q=type%2Fdataset",
+    "permitted_urls_rules": [
+      "/records/oai:marineinfo.org:id:dataset:"
+    ],
+    "denied_urls_rules": [],
+    "keep_parameters": "True",
+    "page_counter": [
+    ],
+    "equal_crawled_features": [
+      "url"
+    ],
+    "decision_model": "envri",
+    "allArray": "True",
+    "features": {
+      "name": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "title",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "description": {
+        "htmlAllowed": false,
+        "cssClass": "gn-abstract",
+        "tag": "div",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "datePublished": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "Publication Date"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "date",
+        "propertyValue": ""
+      },
+      "language": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "Dataset Language"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "creator": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "Dataset Creator"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "metadataProvider": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "Metadata Provider"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "contact": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "Dataset Contact"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "associatedParty": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "Associated Party"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "licenseInformation": {
+        "htmlAllowed": false,
+        "cssClass": "gn-tab-content",
+        "tag": "div",
+        "removeValue": [
+          "License Information"
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "h3",
+            "cssClass": "",
+            "content": [
+              "License Information"
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "downloadLink": {
+        "htmlAllowed": false,
+        "cssClass": "btn btn-block btn-primary",
+        "tag": "a",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "i",
+            "cssClass": "fa fa-fw fa-link",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "section",
+            "cssClass": "gn-md-side-access",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "url",
+        "propertyValue": "href"
+      },
+      "keywords": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "Keywords"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "geographicCoverage": {
+        "htmlAllowed": false,
+        "cssClass": "target",
+        "tag": "div",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "h2",
+            "cssClass": "",
+            "content": [
+              "Geographic Coverage"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "westBoundingCoordinate": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "West Bounding Coordinate"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "eastBoundingCoordinate": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "East Bounding Coordinate"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "northBoundingCoordinate": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "North Bounding Coordinate"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "southBoundingCoordinate": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "South Bounding Coordinate"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "dateCreated": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "Begin Date"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "date",
+        "propertyValue": ""
+      },
+      "temporalCoverageEndDate": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "End Date"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "date",
+        "propertyValue": ""
+      },
+      "license": {
+        "htmlAllowed": false,
+        "cssClass": "target",
+        "tag": "div",
+        "removeValue": [
+          "Online",
+          "URL",
+          "\n"
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "h2",
+            "cssClass": "",
+            "content": [
+              "Distributiondocument"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "link",
+        "propertyValue": ""
+      },
+      "distribution": {
+        "htmlAllowed": false,
+        "cssClass": "target",
+        "tag": "div",
+        "removeValue": [
+          "Online",
+          "URL",
+          "\n"
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "h2",
+            "cssClass": "",
+            "content": [
+              "Distributiondocument"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "link",
+        "propertyValue": ""
+      },
+      "distributionInfo": {
+        "htmlAllowed": false,
+        "cssClass": "target",
+        "tag": "div",
+        "removeValue": [
+          "Online",
+          "URL",
+          "\n"
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "h2",
+            "cssClass": "",
+            "content": [
+              "Distributiondocument"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "link",
+        "propertyValue": ""
+      },
+      "identifier": {
+        "htmlAllowed": false,
+        "cssClass": "btn btn-block btn-primary",
+        "tag": "a",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "i",
+            "cssClass": "fa fa-fw fa-link",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "section",
+            "cssClass": "gn-md-side-access",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "url",
+        "propertyValue": "href"
+      },
+      "accessibilitySummary": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "version": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "temporalCoverage": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "publisher": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "spatial": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "citation": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "genre": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "modificationDate": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "Publication Date"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "date",
+        "propertyValue": ""
+      },
+      "image": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "thumbnailUrl": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "headline": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "title",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "abstract": {
+        "htmlAllowed": false,
+        "cssClass": "gn-abstract",
+        "tag": "div",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "theme": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "creditText": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "producer": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "Dataset Creator"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "author": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "Dataset Creator"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "spatialCoverage": {
+        "htmlAllowed": false,
+        "cssClass": "target",
+        "tag": "div",
+        "removeValue": [
+          "Geographic Description",
+          ",",
+          ":",
+          "ANE ",
+          "MED ",
+          "ISW ",
+          "AE ",
+          "EurOBIS ",
+          "AN ",
+          "ANW "
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "h2",
+            "cssClass": "",
+            "content": [
+              "Geographic Coverage"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "sponsor": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "size": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "sameAs": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "publication": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "provider": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "dd",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "dt",
+            "cssClass": "",
+            "content": [
+              "Dataset Creator"
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "string",
+        "propertyValue": ""
+      },
+      "position": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "measurementTechnique": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "material": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "maintainer": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "locationCreated": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "issn": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "isPartOf": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "isBasedOn": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "isAccessibleForFree": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "includedInDataCatalog": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "editor": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "editEIDR": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "copyrightYear": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "copyrightNotice": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "copyrightHolder": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "contributor": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "contentReferenceTime": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "contentLocation": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "character": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "acquireLicensePage": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "accessModeSufficient": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "about": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "rights": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "relation": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "qualifiedRelation": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "qualifiedAttribution": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "previousVersion": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "nextVersion": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "landingPage": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "isReferencedBy": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "hasVersion": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "hasPolicy": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "hasCurrentVersion": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "useConstraints": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "status": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "spatialRepresentationType": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "scope": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "purpose": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "otherLocale": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "metadataProfile": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "metadataLinkage": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "metadataIdentifier": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "environmentDescription": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "contentInfo": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "ResearchInfrastructure": {
+        "htmlAllowed":false,
+        "cssClass":"navbar-collapse collapse",
+        "tag":"div",
+        "removeValue":[
+
+        ],
+        "searchKeywords":{
+          "infix":{
+            "tag":"",
+            "cssClass":"",
+            "content":[
+              ""
+            ],
+            "propertyValue":""
+          },
+          "prefix":{
+            "index":0,
+            "tag":"",
+            "cssClass":"",
+            "content":[
+              ""
+            ],
+            "propertyValue":""
+          },
+          "postfix":{
+            "index":0,
+            "tag":"",
+            "cssClass":"",
+            "content":[
+              ""
+            ],
+            "propertyValue":""
+          }
+        },
+        "metadataFormat":"textual",
+        "expectedValues":{
+          "LifeWatch": "LifeWatch"
+        },
+        "datatype":"multivalue",
+        "propertyValue":""
+      },
+      "EssentialVariables": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      },
+      "potentialTopics": {
+        "htmlAllowed": false,
+        "cssClass": "",
+        "tag": "",
+        "removeValue": [
+        ],
+        "searchKeywords": {
+          "infix": {
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "prefix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+            ],
+            "propertyValue": ""
+          },
+          "postfix": {
+            "index": 0,
+            "tag": "",
+            "cssClass": "",
+            "content": [
+              ""
+            ],
+            "propertyValue": ""
+          }
+        },
+        "metadataFormat": "textual",
+        "expectedValues": {
+        },
+        "datatype": "",
+        "propertyValue": ""
+      }
+    }
+  }
+}
+
+
+
+
+
+

@@ -1,0 +1,5 @@
+../genericpages/genericpages?page=publications
+../genericpages/genericpages?page=RnD
+../webAPI/genericsearch?term=top10
+../webSearch/genericsearch?term=top10
+../dataset_elastic/genericsearch?term=top10

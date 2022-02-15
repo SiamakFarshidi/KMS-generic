@@ -1,0 +1,454 @@
+{
+  "accessUrl": "https://data.icos-cp.eu/objects/Msxml8TlWbHvmQmDD6EdVgPc",
+  "coverageGeo": {
+    "coordinates": [6.3528, 53.4036, 1.0],
+    "type": "Point"
+  },
+  "fileName": "ICOS_ATC_NRT_LUT_2020-06-01_2021-05-12_7.0_813_MTO.zip",
+  "hash": "Msxml8TlWbHvmQmDD6EdVgPcBij7KcsZM_Oohed61SU",
+  "nextVersion": "https://meta.icos-cp.eu/objects/ATnbpeL6bHZKcxIYIBG5ch1T",
+  "parentCollections": [],
+  "pid": "11676/Msxml8TlWbHvmQmDD6EdVgPc",
+  "previousVersion": "https://meta.icos-cp.eu/objects/pJ8r2AYX1B2lO_kklYao3eYr",
+  "references": {
+    "authors": [{
+      "firstName": "Huilin",
+      "lastName": "Chen",
+      "self": {
+        "comments": [],
+        "uri": "http://meta.icos-cp.eu/resources/people/Huilin_Chen"
+      }
+    }, {
+      "firstName": "Bert",
+      "lastName": "Scheeren",
+      "self": {
+        "comments": [],
+        "uri": "http://meta.icos-cp.eu/resources/people/Bert_Scheeren"
+      }
+    }],
+    "citationBibTex": "@misc{https://hdl.handle.net/11676/Msxml8TlWbHvmQmDD6EdVgPc,\r\n  author={Chen, H., Scheeren, B.},\r\n  title={ICOS ATC NRT Meteo growing time series, Lutjewad (7.0 m), 2020-06-01–2021-05-12},\r\n  year={2021},\r\n  url={https://hdl.handle.net/11676/Msxml8TlWbHvmQmDD6EdVgPc},\r\n  publisher={Atmosphere Thematic Centre},\r\n  copyright={https://creativecommons.org/licenses/by/4.0/},\r\n  pid={11676/Msxml8TlWbHvmQmDD6EdVgPc}\r\n}",
+    "citationRis": "TY - DATA\r\nT1 - ICOS ATC NRT Meteo growing time series, Lutjewad (7.0 m), 2020-06-01–2021-05-12\r\nID - 11676/Msxml8TlWbHvmQmDD6EdVgPc\r\nPY - 2021\r\nUR - https://hdl.handle.net/11676/Msxml8TlWbHvmQmDD6EdVgPc\r\nPB - Atmosphere Thematic Centre\r\nAU - Chen, H.\r\nAU - Scheeren, B.\r\nER - ",
+    "citationString": "Chen, H., Scheeren, B., ICOS RI, 2021. ICOS ATC NRT Meteo growing time series, Lutjewad (7.0 m), 2020-06-01–2021-05-12, https://hdl.handle.net/11676/Msxml8TlWbHvmQmDD6EdVgPc",
+    "temporalCoverageDisplay": "2020-06-01–2021-05-12"
+  },
+  "size": 102675,
+  "specificInfo": {
+    "acquisition": {
+      "instrument": {
+        "comments": [],
+        "label": "Barometric Pressure Sensor PTB210A",
+        "uri": "http://meta.icos-cp.eu/resources/instruments/ATC_813"
+      },
+      "interval": {
+        "start": "2020-06-01T00:00:00Z",
+        "stop": "2021-05-12T12:00:00Z"
+      },
+      "samplingHeight": 7.0,
+      "station": {
+        "coverage": {
+          "alt": 1.0,
+          "geo": {
+            "coordinates": [6.3528, 53.4036, 1.0],
+            "type": "Point"
+          },
+          "label": "LUT",
+          "lat": 53.4036,
+          "lon": 6.3528
+        },
+        "id": "LUT",
+        "org": {
+          "name": "Lutjewad",
+          "self": {
+            "comments": [],
+            "label": "LUT",
+            "uri": "http://meta.icos-cp.eu/resources/stations/AS_LUT"
+          }
+        },
+        "pictures": ["https://meta.icos-cp.eu/files/Btx3XwB-pvaCd7dQHa0B9icw/Lutjewadlocation.jpg"],
+        "responsibleOrganization": {
+          "name": "Rijksuniversiteit Groningen",
+          "self": {
+            "comments": [],
+            "label": "RUG",
+            "uri": "http://meta.icos-cp.eu/resources/organizations/RUG"
+          },
+          "website": "https://www.rug.nl"
+        },
+        "specificInfo": {
+          "_type": "plainicos",
+          "countryCode": "NL",
+          "documentation": [{
+            "hash": "rwWYZMejLHM--hT_Kq3KNgJhDgS2fLDi_q71y5rBZCg",
+            "name": "Lutjewad_STILT_station_characterization.pdf",
+            "res": "https://meta.icos-cp.eu/objects/rwWYZMejLHM--hT_Kq3KNgJh"
+          }],
+          "labelingDate": "2019-05-22",
+          "stationClass": "2",
+          "theme": {
+            "icon": "https://static.icos-cp.eu/images/themes/atm.svg",
+            "markerIcon": "https://static.icos-cp.eu/share/stations/icons/as.png",
+            "self": {
+              "comments": [],
+              "label": "Atmospheric data",
+              "uri": "http://meta.icos-cp.eu/resources/themes/atmosphere"
+            }
+          },
+          "timeZoneOffset": 1
+        }
+      }
+    },
+    "columns": [{
+      "label": "TIMESTAMP",
+      "valueType": {
+        "self": {
+          "comments": [],
+          "label": "time instant, UTC",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/timeStamp"
+        }
+      }
+    }, {
+      "label": "AP",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["mechanical pressure, e.g. atmospheric or gas pressure"],
+          "label": "pressure",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/pressure"
+        },
+        "self": {
+          "comments": [],
+          "label": "air pressure",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/airPressure"
+        },
+        "unit": "hPa"
+      }
+    }, {
+      "label": "AP-Stdev",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["mechanical pressure, e.g. atmospheric or gas pressure"],
+          "label": "pressure",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/pressure"
+        },
+        "self": {
+          "comments": [],
+          "label": "standard deviation of air pressure",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/airPressureSd"
+        },
+        "unit": "hPa"
+      }
+    }, {
+      "label": "AP-NbPoints",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["integer number"],
+          "label": "number",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/number"
+        },
+        "self": {
+          "comments": [],
+          "label": "number of points",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/npoints"
+        }
+      }
+    }, {
+      "label": "AP-Flag",
+      "valueType": {
+        "self": {
+          "comments": ["single-letter quality flag"],
+          "label": "quality flag",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/oneLetterFlag"
+        }
+      }
+    }, {
+      "label": "AT",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["physical temperature"],
+          "label": "temperature",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/temperature"
+        },
+        "self": {
+          "comments": [],
+          "label": "air temperature",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/airTempCelsius"
+        },
+        "unit": "°C"
+      }
+    }, {
+      "label": "AT-Stdev",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["physical temperature"],
+          "label": "temperature",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/temperature"
+        },
+        "self": {
+          "comments": [],
+          "label": "standard deviation of air temperature",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/airTempCelciusSd"
+        },
+        "unit": "°C"
+      }
+    }, {
+      "label": "AT-NbPoints",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["integer number"],
+          "label": "number",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/number"
+        },
+        "self": {
+          "comments": [],
+          "label": "number of points",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/npoints"
+        }
+      }
+    }, {
+      "label": "AT-Flag",
+      "valueType": {
+        "self": {
+          "comments": ["single-letter quality flag"],
+          "label": "quality flag",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/oneLetterFlag"
+        }
+      }
+    }, {
+      "label": "RH",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["Magnitude of a part of a whole. Can be measured in percent, or be a number between 0 and maximum (inclusive)."],
+          "label": "portion",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/portion"
+        },
+        "self": {
+          "comments": [],
+          "label": "relative humidity",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/relativeHumidity"
+        },
+        "unit": "%"
+      }
+    }, {
+      "label": "RH-Stdev",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["Magnitude of a part of a whole. Can be measured in percent, or be a number between 0 and maximum (inclusive)."],
+          "label": "portion",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/portion"
+        },
+        "self": {
+          "comments": [],
+          "label": "standard deviation of relative humidity",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/relativeHumiditySd"
+        },
+        "unit": "%"
+      }
+    }, {
+      "label": "RH-NbPoints",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["integer number"],
+          "label": "number",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/number"
+        },
+        "self": {
+          "comments": [],
+          "label": "number of points",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/npoints"
+        }
+      }
+    }, {
+      "label": "RH-Flag",
+      "valueType": {
+        "self": {
+          "comments": ["single-letter quality flag"],
+          "label": "quality flag",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/oneLetterFlag"
+        }
+      }
+    }, {
+      "label": "WS",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["distance per unit time"],
+          "label": "velocity",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/velocity"
+        },
+        "self": {
+          "comments": [],
+          "label": "wind speed",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/windSpeed"
+        },
+        "unit": "m s-1"
+      }
+    }, {
+      "label": "WS-Stdev",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["distance per unit time"],
+          "label": "velocity",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/velocity"
+        },
+        "self": {
+          "comments": [],
+          "label": "standard deviation of wind speed",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/windSpeedSd"
+        },
+        "unit": "m s-1"
+      }
+    }, {
+      "label": "WS-NbPoints",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["integer number"],
+          "label": "number",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/number"
+        },
+        "self": {
+          "comments": [],
+          "label": "number of points",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/npoints"
+        }
+      }
+    }, {
+      "label": "WS-Flag",
+      "valueType": {
+        "self": {
+          "comments": ["single-letter quality flag"],
+          "label": "quality flag",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/oneLetterFlag"
+        }
+      }
+    }, {
+      "label": "WD",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["angle in the trigonometric sense"],
+          "label": "angle",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/angle"
+        },
+        "self": {
+          "comments": [],
+          "label": "wind direction",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/windDirection"
+        },
+        "unit": "°"
+      }
+    }, {
+      "label": "WD-Stdev",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["angle in the trigonometric sense"],
+          "label": "angle",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/angle"
+        },
+        "self": {
+          "comments": [],
+          "label": "standard deviation of wind direction",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/windDirectionSd"
+        },
+        "unit": "°"
+      }
+    }, {
+      "label": "WD-NbPoints",
+      "valueType": {
+        "quantityKind": {
+          "comments": ["integer number"],
+          "label": "number",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/number"
+        },
+        "self": {
+          "comments": [],
+          "label": "number of points",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/npoints"
+        }
+      }
+    }, {
+      "label": "WD-Flag",
+      "valueType": {
+        "self": {
+          "comments": ["single-letter quality flag"],
+          "label": "quality flag",
+          "uri": "http://meta.icos-cp.eu/resources/cpmeta/oneLetterFlag"
+        }
+      }
+    }],
+    "nRows": 8293,
+    "productionInfo": {
+      "contributors": [],
+      "creator": {
+        "name": "Atmosphere Thematic Centre",
+        "self": {
+          "comments": [],
+          "label": "ICOS ATC",
+          "uri": "http://meta.icos-cp.eu/resources/organizations/ATC"
+        }
+      },
+      "dateTime": "2021-05-12T10:05:43Z",
+      "host": {
+        "name": "Atmosphere Thematic Centre",
+        "self": {
+          "comments": [],
+          "label": "ICOS ATC",
+          "uri": "http://meta.icos-cp.eu/resources/organizations/ATC"
+        }
+      },
+      "sources": []
+    }
+  },
+  "specification": {
+    "dataLevel": 1,
+    "datasetSpec": {
+      "self": {
+        "comments": [],
+        "label": "Atmospheric meteo time series",
+        "uri": "http://meta.icos-cp.eu/resources/cpmeta/atcMeteoTimeSer"
+      }
+    },
+    "documentation": [],
+    "encoding": {
+      "comments": [],
+      "label": "zip",
+      "uri": "http://meta.icos-cp.eu/ontologies/cpmeta/zipEncoding"
+    },
+    "format": {
+      "comments": ["Semicolon-separated ASCII, with #-prefixed multi-line header"],
+      "label": "ICOS ATC time series",
+      "uri": "http://meta.icos-cp.eu/ontologies/cpmeta/asciiAtcProductTimeSer"
+    },
+    "keywords": ["meteo"],
+    "project": {
+      "keywords": ["ICOS"],
+      "self": {
+        "comments": ["Official ICOS data"],
+        "label": "ICOS",
+        "uri": "http://meta.icos-cp.eu/resources/projects/icos"
+      }
+    },
+    "self": {
+      "comments": ["Automatically-produced, daily-growing (by data object deprecation) meteo data. The data starts from the last respective L2 release."],
+      "label": "ICOS ATC NRT Meteo growing time series",
+      "uri": "http://meta.icos-cp.eu/resources/cpmeta/atcMeteoGrowingNrtDataObject"
+    },
+    "theme": {
+      "icon": "https://static.icos-cp.eu/images/themes/atm.svg",
+      "markerIcon": "https://static.icos-cp.eu/share/stations/icons/as.png",
+      "self": {
+        "comments": [],
+        "label": "Atmospheric data",
+        "uri": "http://meta.icos-cp.eu/resources/themes/atmosphere"
+      }
+    }
+  },
+  "submission": {
+    "start": "2021-05-12T10:05:43.437Z",
+    "stop": "2021-05-12T10:05:46.777Z",
+    "submitter": {
+      "name": "Atmosphere Thematic Centre",
+      "self": {
+        "comments": [],
+        "label": "ICOS ATC",
+        "uri": "http://meta.icos-cp.eu/resources/organizations/ATC"
+      }
+    }
+  }
+}

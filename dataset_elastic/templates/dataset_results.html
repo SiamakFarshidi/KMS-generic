@@ -1,0 +1,726 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <title>Dataset Search</title>
+    <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Gradient Able Bootstrap admin template made using Bootstrap 4. The starter version of Gradient Able is completely free for personal project." />
+    <meta name="keywords" content="flat ui, admin , Flat ui, Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="codedthemes">
+    <!-- Favicon icon -->
+    <link rel="icon" href="{% static '/images/envriLOGO.png'%}" type="image/x-icon">
+    <!-- Google font--><link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap/css/bootstrap.min.css'%}">
+    <!-- themify-icons line icon -->
+    <link rel="stylesheet" type="text/css" href="{% static '/icon/themify-icons/themify-icons.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static '/icon/font-awesome/css/font-awesome.min.css'%}">
+
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="{% static '/icon/icofont/css/icofont.css'%}">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/jquery.mCustomScrollbar.css'%}">
+    <link rel="stylesheet" href="{% static '/notification/style.css'%}" />
+    <script src="{% static '/notification/cute-alert.js'%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/starRating/starability-minified/starability-all.min.css'%}"/>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+
+    <style>
+        h5.titleTrimming {
+          white-space: nowrap;
+          width: 60%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+    .show-read-more .more-text{
+        display: none;
+    }
+    #map{
+        height: 180px;
+        margin-bottom:20px;
+
+    }
+
+</style>
+
+</head>
+
+
+
+<body>
+
+<!-- Pre-loader start -->
+<div class="theme-loader">
+    <div class="loader-track">
+        <div class="loader-bar"></div>
+    </div>
+</div>
+<!-- Pre-loader end -->
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
+
+        <nav class="navbar header-navbar pcoded-header">
+            <div class="navbar-wrapper">
+                <div class="navbar-logo">
+                    <a class="mobile-menu" id="mobile-collapse" href="#!">
+                        <i class="ti-menu"></i>
+                    </a>
+                    <div class="mobile-search">
+                        <div class="header-search">
+                            <div class="main-search morphsearch-search">
+                                <div class="input-group">
+                                    <span class="input-group-addon search-close"><i class="ti-close"></i></span>
+                                    <input type="text" class="form-control" placeholder="Enter Keyword">
+                                    <span class="input-group-addon search-btn"><i class="ti-search" ></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="../genericpages/genericpages?page=home">
+                        <img class="img-fluid" src="{% static 'images/ENVRI-WHITE-LOGO.png' %}" style="width:65px; padding:6px;margin-top:-5px;" alt="Theme-Logo" />
+                    </a>
+                    <a class="mobile-options">
+                        <i class="ti-more"></i>
+                    </a>
+                </div>
+
+                <div class="navbar-container container-fluid">
+                    <ul class="nav-left">
+                        <li>
+                            <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+                        </li>
+                        <li class="header-search">
+                            <div class="main-search morphsearch-search">
+                                <div class="input-group">
+                                    <span class="input-group-addon search-close"><i class="ti-close"></i></span>
+                                    <input type="text" class="form-control" id="searchbox1" name="searchbox1" onchange="search(1);">
+                                    <span class="input-group-addon search-btn" ><i class="ti-search"></i></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#!" onclick="javascript:toggleFullScreen()">
+                                <i class="ti-fullscreen"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav-right">
+                        <li class="header-notification">
+                            <a href="#!">
+                                <i style="font-size:15pt; " class="ti-shopping-cart"></i>
+                                <span style="display: inline-block;font-size:10pt;font-weight:bold;"> <sup><span id="MyCartCount" >100</span></sup>  </span>
+                            </a>
+                            <ul class="show-notification" id="MyCart">
+                                <li>
+                                    <h6 style="color:blue;">My Basket</h6>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="user-profile header-notification">
+                            <a href="#!">
+                                <img src="{% static 'images/GuestICON.png' %}" class="img-radius" alt="User-Profile-Image">
+                                <span>Guest</span>
+                                <i class="ti-angle-down"></i>
+                            </a>
+                            <ul class="show-notification profile-notification">
+                                <li><a href="../accountManagement/login"><i class="ti-layout-sidebar-left"></i> Login </a> </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <nav class="pcoded-navbar">
+                    <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                    <div class="pcoded-inner-navbar main-menu">
+
+                        <div class="pcoded-search">
+                            <span class="searchbar-toggle">  </span>
+                            <div class="pcoded-search-box ">
+                                <input type="text" placeholder="Search" id="searchbox2" name="searchbox2" onchange="search(2);">
+                                <span class="search-icon" ><i class="ti-search" aria-hidden="true" onclick="search(2);"></i></span>
+                            </div>
+                        </div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Search Space</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="">
+                                <a href="../webSearch/genericsearch?term={{ searchTerm }}&page=1" >
+                                    <span class="pcoded-micon"><i class="ti-world"></i><b>D</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Webpages</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li class="active pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-ruler-pencil"></i></span>
+                                    <span class="pcoded-mtext"  data-i18n="nav.dash.main">Datasets</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <span style="font-weight:bold; padding:5px; color:darkblue; font-size:10pt;">
+                                        <a href="../dataset_elastic/genericsearch?term={{ searchTerm }}&page=1">
+                                            <i class="ti-reload"></i> &nbsp; Reset filters </a> <br> <br>
+                                         </span>
+
+                                    {% if facets.ResearchInfrastructure %}
+                                        <span style="font-weight:bold; padding:5px; color:darkblue; font-size:10pt;">
+                                             Research Infrastructures:
+                                         </span>
+                                    {% endif %}
+                                    {%for facet in facets.ResearchInfrastructure%}
+                                        <li class=" " >
+                                            <a href="#"  onclick="facetSearch('ResearchInfrastructure','{{facet.key}}');">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">
+                                                    {{ facet.key|truncatechars:15 }}
+                                                    ({{ facet.doc_count }})
+                                                </span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                    {% if facets.measurementTechnique %}
+                                        <span style="font-weight:bold; padding:5px; color:darkblue; font-size:10pt;">
+                                             Measurement Technique:
+                                         </span>
+                                    {% endif %}
+                                    {%for facet in facets.measurementTechnique %}
+                                    <li class=" " >
+                                        <a href="#"  onclick="facetSearch('measurementTechnique','{{facet.key}}');">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">
+                                                    {{ facet.key|truncatechars:15 }}
+                                                    ({{ facet.doc_count }})
+                                                </span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                    {% if facets.publisher %}
+                                        <span style="font-weight:bold; padding:5px; color:darkblue; font-size:10pt;">
+                                             Publishers:
+                                         </span>
+                                    {% endif %}
+                                    {%for facet in facets.publisher %}
+                                    <li class=" " >
+                                        <a href="#" onclick="facetSearch('publisher','{{facet.key}}');">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">
+                                                    {{ facet.key|truncatechars:15 }}
+                                                    ({{ facet.doc_count }})
+                                                </span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                    {% if facets.theme %}
+                                        <span style="font-weight:bold; padding:5px; color:darkblue; font-size:10pt;">
+                                             Themes:
+                                         </span>
+                                    {% endif %}
+                                    {%for facet in facets.theme %}
+                                    <li class=" ">
+                                        <a href="#" onclick="facetSearch('theme','{{facet.key}}');">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">
+                                                    {{ facet.key|truncatechars:15 }}
+                                                    ({{ facet.doc_count }})
+                                                </span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                    {% if facets.spatialCoverage %}
+                                        <span style="font-weight:bold; padding:5px; color:darkblue; font-size:10pt;">
+                                             Spatial Coverage:
+                                         </span>
+                                    {% endif %}
+                                    {%for facet in facets.spatialCoverage %}
+                                    <li class=" ">
+                                        <a href="#" onclick="facetSearch('spatialCoverage','{{facet.key}}');">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">
+                                                    {{ facet.key|truncatechars:15 }}
+                                                    ({{ facet.doc_count }})
+                                                </span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a href="../webAPI/genericsearch?term={{ searchTerm }}&page=1" >
+                                    <span class="pcoded-micon"><i class="ti-control-shuffle"></i></span>
+                                    <span class="pcoded-mtext"  data-i18n="nav.dash.main">Web APIs</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="../notebookSearch/genericsearch?term={{ searchTerm }}&page=1" >
+                                    <span class="pcoded-micon"><i class="ti-package"></i></span>
+                                    <span class="pcoded-mtext"  data-i18n="nav.dash.main">Notebooks</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="../webSearch/genericsearch?term={{ searchTerm }}&page=1&searchtype=imagesearch" >
+                                    <span class="pcoded-micon"><i class="ti-gallery"></i></span>
+                                    <span class="pcoded-mtext"  data-i18n="nav.dash.main">Images</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Visualization</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                <a href="../genericpages/genericpages?page=graphV&term={{ searchTerm }}" target="_blank">
+                                    <span class="pcoded-micon"><i class="ti-vector"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Graph based</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../genericpages/genericpages?page=pieChart&term={{ searchTerm }}">
+                                    <span class="pcoded-micon"><i class="ti-pie-chart"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Pie chart</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Info</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                <a href="../genericpages/genericpages?page=publications&term={{ searchTerm }}" >
+                                    <span class="pcoded-micon"><i class="ti-write"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Publications</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../genericpages/genericpages?page=RnD&term={{ searchTerm }}" >
+                                    <span class="pcoded-micon"><i class="ti-user"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">R&amp;D team</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="map-google.html"  >
+                                    <span class="pcoded-micon"><i class="ti-comments"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Feedback</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+
+                        <div class="main-body">
+                            <div class="page-wrapper" id="MessageBox">
+                                <div id="map"></div>
+
+                                <script>sessionStorage.setItem("searchValue", "{{searchTerm}}"); </script>
+                                {% if NumberOfHits == 10000 %}
+                                I found <b> more than {{ NumberOfHits }}</b> results for you!
+                                {% elif NumberOfHits > 0 %}
+                                I found <b>{{ NumberOfHits}}</b> results for you!
+                                {% elif NumberOfHits == 1 %}
+                                I found only <b>one</b> result for you!
+                                {% else %}
+                                I couldn't find <b>anything</b> based on <b>"{{searchTerm}}"</b> for you!
+                                <br>
+                                {% if suggestedSearchTerm != "" %}
+                                Did you mean:
+                                <b><a href="../dataset_elastic/genericsearch?term={{ suggestedSearchTerm }}&page=1">{{ suggestedSearchTerm }}</a></b>
+                                {% endif %}
+                                <script>
+                                        //sessionStorage.setItem("SearchFailed","Yes");
+                                        sessionStorage.setItem("searchValue", "");
+                                    </script>
+                                {% endif %}
+                                <a style="color:blue;font-size:xx-small;" href="#" onclick="sendFeedback('datasets', '{{searchTerm}}', 'guestUser');"> (Feedback)</a>
+                                <br>
+                                <br>
+
+                                <script>
+                                    if (sessionStorage.getItem("SearchFailed")=="Yes"){
+                                        cuteAlert({
+                                          type: "info",
+                                          title: "No results found",
+                                          message: "I coudn't find anything for you! <br> Please revise your search term.",
+                                          buttonText: "Okay"
+                                        }).then(() => {
+                                          // do something
+                                        });
+                                    }
+                                    sessionStorage.setItem("SearchFailed","No");
+                                </script>
+
+                                {%for resultItem in results %}
+
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="card">
+                                                    <div class="card-header">
+
+                                                        <h5 class="m-b-10 titleTrimming">
+                                                            {% if 'json' in resultItem.url.0 %}
+                                                            <a href="{{ resultItem.url.0|slice:':-4' }}" target="_blank"  style="color:darkblue;">
+                                                                {% else %}
+                                                            <a href="{{ resultItem.url.0 }}" target="_blank"  style="color:darkblue;">
+                                                                {% endif %}
+                                                                <img src="{% static 'images/datasetlogo.png' %}" style="width:15px; left: 10px; margin-right:6px;"/>
+                                                            {%for name in resultItem.name %}
+                                                                {% if name != resultItem.ResearchInfrastructure.0 %}
+                                                                    {{ name }} .
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </a>
+                                                        </h5>
+                                                        <div class="card-header-right">
+                                                            <ul class="list-unstyled card-option">
+                                                                <li><i class="fa fa-chevron-left"></i></li>
+                                                                <li><i class="fa fa-window-maximize full-card"></i></li>
+                                                                <li><i class="fa fa-minus minimize-card"></i></li>
+                                                                <li><i class="fa fa-refresh reload-card"></i></li>
+                                                                <li><i class="fa fa-times close-card"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <p class="show-read-more">
+                                                            {%for description in resultItem.description %}
+                                                                {{ description }} .
+                                                            {% endfor %}
+                                                        </p>
+                                                        <ul class="breadcrumb-title b-t-default p-t-10">
+                                                            <li class="breadcrumb-item"><a href="#!">
+                                                                {% if resultItem.ResearchInfrastructure.0 == "SeaDataNet" %}
+                                                                    <img src="{% static 'images/ENVRI-Collection/RIs/SeaDataNet.jpg' %}" style="width:50px" />
+                                                                {% elif resultItem.ResearchInfrastructure.0 == "ICOS"%}
+                                                                <img src="{% static 'images/ENVRI-Collection/RIs/ICOS.jpg' %}" style="width:70px" />
+                                                                {% elif resultItem.ResearchInfrastructure.0 == "LifeWatch"%}
+                                                                <img src="{% static 'images/ENVRI-Collection/RIs/LifeWatchERIC.png' %}" style="width:70px" />
+                                                                {% endif %}
+
+                                                            </a>
+                                                                <a href="#" onclick="modifyBasket('add','Datasets',&quot;{%for name in resultItem.name %}{% if name != resultItem.ResearchInfrastructure.0 %}{{ name }} .{% endif %}{% endfor %}&quot;, &quot;{% if 'json' in resultItem.url.0 %} {{ resultItem.url.0|slice:':-4' }}{% else %}{{ resultItem.url.0 }}{% endif %}&quot;, 'id');">
+                                                                    <img src="{% static 'images/addToBasket.png' %}" style="width:25px; right:0px;position: absolute;margin-right:20px;" /> </a>
+
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                            <div style="text-align:center; margin-bottom:40px;">
+                                {%for page in page_range %}
+                                {% if page == cur_page %}
+                                <input type="button" class="btn btn-grd-primary" style="font-weight:bold; width:30px; padding:5px;" value="{{ page }}">
+                                {% else %}
+                                <input type="button" class="btn btn-primary btn-outline-primary" style="font-weight:bold; width:30px; padding:5px;" value="{{ page }}" onclick="btnPage({{ page }});">
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div id="styleSelector">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% csrf_token %}
+
+<script type="text/javascript" src="{% static 'js/jquery/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery-ui/jquery-ui.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/popper.js/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- jquery slimscroll js -->
+<script type="text/javascript" src="{% static 'js/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
+<!-- modernizr js -->
+<script type="text/javascript" src="{% static 'js/modernizr/modernizr.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/modernizr/css-scrollbars.js' %}"></script>
+
+<!-- Custom js -->
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/pcoded.min.js' %}"></script>
+<script src="{% static 'js/vartical-demo.js' %}"></script>
+<script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+
+<script>
+//---------------------------------------------------------------------
+function clearSearchBoxes(){
+    sessionStorage.setItem("searchValue", "");
+}
+//---------------------------------------------------------------------
+function facetSearch(facet,filter){
+    // Construct URLSearchParams object instance from current URL querystring.
+    var queryParams = new URLSearchParams(window.location.search);
+    // Set new or modify existing parameter value.
+    queryParams.set("filter", filter);
+    queryParams.set("facet", facet);
+    queryParams.set("page", 1);
+    // Replace current querystring with the new one.
+    history.replaceState(null, null, "?"+queryParams.toString());
+    location.reload();
+}
+//---------------------------------------------------------------------
+function btnPage(page){
+    // Construct URLSearchParams object instance from current URL querystring.
+    var queryParams = new URLSearchParams(window.location.search);
+    // Set new or modify existing parameter value.
+    queryParams.set("page", page);
+    // Replace current querystring with the new one.
+    history.replaceState(null, null, "?"+queryParams.toString());
+    location.reload();
+}
+//---------------------------------------------------------------------
+function search(searchBoxNum){
+    var searchValue =""
+    if (searchBoxNum==1){
+        searchValue = document.getElementById('searchbox1').value;
+    }
+    else{
+        searchValue = document.getElementById('searchbox2').value;
+    }
+    sessionStorage.setItem("searchValue", searchValue);
+
+    if(searchValue===""){
+        document.getElementById('MessageBox').innerText= "Please enter at least one keyword, otherwise, I cannot help you!";
+    }
+    else{
+        // Construct URLSearchParams object instance from current URL querystring.
+        var queryParams = new URLSearchParams(window.location.search);
+        // Set new or modify existing parameter value.
+        queryParams.set("page", 1);
+        queryParams.set("term", searchValue);
+        // Replace current querystring with the new one.
+        history.replaceState(null, null, "?"+queryParams.toString());
+        location.reload();
+    }
+}
+//--------------------------------------------------------------------- Iniitialization
+document.getElementById('searchbox1').value = sessionStorage.getItem("searchValue");
+document.getElementById('searchbox2').value = sessionStorage.getItem("searchValue");
+cnt=document.querySelectorAll("#MyCart li").length-1;
+$('#MyCartCount').text(cnt);
+//---------------------------------------------------------------------
+$(document).ready(function(){
+    var maxLength = 500;
+    $(".show-read-more").each(function(){
+        var myStr = $(this).html();
+        if($.trim(myStr).length > maxLength){
+            var newStr = myStr.substring(0, maxLength);
+            var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+            $(this).empty().html(newStr);
+            $(this).append(' <a href="javascript:void(0);" class="read-more">[+]</a>');
+            $(this).append('<span class="more-text">' + removedStr + '</span>');
+        }
+    });
+    $(".read-more").click(function(){
+        $(this).siblings(".more-text").contents().unwrap();
+        $(this).remove();
+    });
+});
+//---------------------------------------------------------------------
+// https://docs.djangoproject.com/en/3.2/ref/csrf/#acquiring-the-token-if-csrf-use-sessions-and-csrf-cookie-httponly-are-false
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== "") {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      // Does this cookie string begin with the name we want?
+      if (cookie.substring(0, name.length + 1) === (name + "=")) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+ }
+//---------------------------------------------------------------------
+function modifyBasket(operation,type, title, url, id){
+
+  if (title.length>35){
+    title=title.substring(1, 35)+"...";
+  }
+
+
+  if (operation=='add'){
+      id = 'id' + (new Date()).getTime();
+  }
+  newEntitiy={'operation':operation,'type':type,'title':title,'url':url,'id':id };
+  $.ajax({
+    url: '../webSearch/addToBasket',
+    type: "POST",
+    dataType: "json",
+    data: JSON.stringify(newEntitiy),
+  headers: {
+    "X-Requested-With": "XMLHttpRequest",
+    "X-CSRFToken": getCookie("csrftoken"),  // don't forget to include the 'getCookie' function
+  },
+    success: (data) => {
+      console.log(data);
+      modifyCart(data);
+    },
+    error: (error) => {
+      console.log(error);
+    }
+  });
+}
+
+function modifyCart(data) {
+  if(data['operation']=='add'){
+      var ul = document.getElementById("MyCart");
+      var li = document.createElement("li");
+      var icon="";
+      if(data['type']=='Webpages'){
+        icon='<i style="font-size:10pt; font-weight: bold; padding-right:5px;" class="ti-world"></i>';
+      }
+      else if(data['type']=='Datasets'){
+        icon='<i style="font-size:10pt; font-weight: bold; padding-right:5px;" class="ti-ruler-pencil"></i>';
+      }
+      else if(data['type']=='WebAPIs'){
+        icon='<i style="font-size:10pt; font-weight: bold; padding-right:5px;" class="ti-control-shuffle"></i>';
+      }
+      else if(data['type']=='Notebooks'){
+        icon='<i style="font-size:10pt; font-weight: bold; padding-right:5px;" class="ti-package"></i>';
+      }
+      li.innerHTML= '<div class="media">'+
+                        icon+
+                        '<div class="media-body">'+
+                            '<h5 class="notification-user"><a target="_blank" href="'+data['url']+'">'+data['title']+'</a> </h5>'+
+                         '</div>'+
+                         '<a href="#" onclick="modifyBasket(&quot;delete&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;'+data['id']+'&quot;);"'+
+                           'style="font-size:8pt;  display:inline-block;"> <i class="ti-close"></i>'+
+                         '</a>'+
+                    '</div>';
+      li.setAttribute("id", data['id']); // added line
+      ul.appendChild(li);
+  }
+  else if(data['operation']=='delete'){
+      $('#'+data['id']).remove();
+  }
+
+  cnt=document.querySelectorAll("#MyCart li").length-1;
+  $('#MyCartCount').text(cnt);
+}
+{{functionList|safe}}
+
+//---------------------------------------------------------------------
+var map = L.map('map').setView([0,0], 1);
+
+function generateFirstView(location, RI){
+    if (location=="") {return 0;}
+
+    var location_url= "https://www.mapquestapi.com/geocoding/v1/address?key=y5k2RIvnWCBRSWuYbKjlVo8SFdPm8nsz&location="+location;
+    $.ajax({
+            url: location_url,
+                timeout: 15000 ,
+            beforeSend: function(xhr) {
+                 xhr.setRequestHeader("Authorization", "Bearer 6QXNMEMFHNY4FJ5ELNFMP5KRW52WFXN5")
+            }, success: function(data){
+                console.log(data['results'][0]);
+                coord=data['results'][0]['locations'][0]['latLng'];
+                if (typeof coord != "undefined" ){
+                    lat_lng=[coord['lat'], coord['lng']];
+                    map = map.setView(lat_lng, 1);
+                }
+            }
+    })
+}
+
+function insertLocation(location, RI){
+    if (location=="") {return 0;}
+    var location_url= "https://www.mapquestapi.com/geocoding/v1/address?key=y5k2RIvnWCBRSWuYbKjlVo8SFdPm8nsz&location="+location;
+    $.ajax({
+            url: location_url,
+                timeout: 15000 ,
+            beforeSend: function(xhr) {
+                 xhr.setRequestHeader("Authorization", "Bearer 6QXNMEMFHNY4FJ5ELNFMP5KRW52WFXN5")
+            }, success: function(data){
+                console.log(data['results'][0]);
+                coord=data['results'][0]['locations'][0]['latLng'];
+                if (typeof coord != "undefined" ){
+                    display_name=data['results'][0]['providedLocation']['location'];
+                    marker = new L.marker([coord['lat'], coord['lng']])
+                   .bindPopup(RI + ': '+ location)
+                   .addTo(map);
+               }
+            }
+    })
+}
+
+generateFirstView('{{ spatialCoverage.0.location }}', '{{ spatialCoverage.0.RI }}');
+
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1Ijoic2lhbWFrZmFyc2hpZGkiLCJhIjoiY2s3dG5zaW0wMHg4czNtb3U1dWRwc2ZlbyJ9.yYhXI7_f9gBUYBAD_wS8Ug'
+}).addTo(map);
+
+{% for geo in spatialCoverage %}
+      insertLocation('{{ geo.location }}', '{{ geo.RI }}');
+{% endfor %}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+                <ul class="nav-right">
+                    <li class="header-notification">
+                        <a href="#!">
+                            <i class="ti-bell"></i>
+                            <span class="badge bg-c-pink"></span>
+                        </a>
+                    </li>
+
+                    <li class="user-profile header-notification">
+                        <a href="#!">
+                            <img src="{% static 'images/GuestICON.png' %}" class="img-radius" alt="User-Profile-Image">
+                            <span>Guest</span>
+                            <i class="ti-angle-down"></i>
+                        </a>
+                        <ul class="show-notification profile-notification">
+                        </ul>
+                    </li>
+                </ul>
