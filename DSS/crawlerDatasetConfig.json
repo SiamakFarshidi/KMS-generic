@@ -19,14 +19,16 @@
     "permitted_urls_rules": [
       "/records/oai:marineinfo.org:id:dataset:"
     ],
-    "denied_urls_rules": [],
+    "denied_urls_rules": [
+
+    ],
     "keep_parameters": "True",
     "page_counter": [
     ],
     "equal_crawled_features": [
       "url"
     ],
-    "decision_model": "envri",
+    "decision_model": "lifewatch",
     "allArray": "True",
     "features": {
       "name": {
@@ -3559,7 +3561,65 @@
         "propertyValue": ""
       }
     }
+  },
+  "envri": {
+    "seed": "https://envri.eu/",
+    "permitted_urls_rules": [
+      "/research-infrastructures/"
+    ],
+    "denied_urls_rules": [
+
+    ],
+    "keep_parameters": "True",
+    "page_counter": [
+    ],
+    "equal_crawled_features": [
+      "url"
+    ],
+    "decision_model": "envriwebsite",
+    "allArray": "title",
+    "features":{
+      "htmlAllowed": false,
+      "cssClass": "",
+      "tag": "title",
+      "removeValue": [
+      ],
+      "searchKeywords": {
+        "infix": {
+          "tag": "div",
+          "cssClass": "fusion-text",
+          "content": [
+            ""
+          ],
+          "propertyValue": ""
+        },
+        "prefix": {
+          "index": 0,
+          "tag": "",
+          "cssClass": "",
+          "content": [
+            ""
+          ],
+          "propertyValue": ""
+        },
+        "postfix": {
+          "index": 0,
+          "tag": "",
+          "cssClass": "",
+          "content": [
+            ""
+          ],
+          "propertyValue": ""
+        }
+      },
+      "metadataFormat": "textual",
+      "expectedValues": {
+      },
+      "datatype": "string",
+      "propertyValue": ""
+    }
   }
+
 }
 
 

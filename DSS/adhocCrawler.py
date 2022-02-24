@@ -726,6 +726,7 @@ def filterValue(value, feature):
 #-----------------------------------------------------------------------------------------------------------------------
 def getValue(feature, html):
     global config
+
     tags=html.find_all(config['features'][feature]['tag'], {"class" : config['features'][feature]['cssClass']})
 
     if len(tags)==1:
