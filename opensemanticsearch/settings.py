@@ -90,13 +90,13 @@ WSGI_APPLICATION = 'opensemanticsearch.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-if os.path.isfile('/etc/opensemanticsearch-django-webapps/my.cnf'):
+if os.path.isfile('my.cnf'):
 
 	DATABASES = {
 		'default': {
 					'ENGINE': 'django.db.backends.mysql',
 					'OPTIONS': {
-							'read_default_file': '/etc/opensemanticsearch-django-webapps/my.cnf',
+							'read_default_file': 'my.cnf',
 					},
 				}
 	}
@@ -106,7 +106,7 @@ else:
 	DATABASES = {
 	    'default': {
 	        'ENGINE': 'django.db.backends.sqlite3',
-	        'NAME': '/var/opensemanticsearch/db/db.sqlite3',
+	        'NAME': 'db.sqlite3',
 	    }
 	}
 
