@@ -39,10 +39,10 @@ from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 #----------------------------------------------------------------------------------------
 #nltk.data.path.append("/home/siamak/nltk_data")
-#nltk.data.path.append("/var/www/nltk_data")
+#nltk.data.path.append("var/www/nltk_data")
 
-nltk.download('wordnet', download_dir='/var/www/nltk_data')
-nltk.download('stopwords', download_dir='/var/www/nltk_data')
+nltk.download('wordnet', download_dir='var/www/nltk_data')
+nltk.download('stopwords', download_dir='var/www/nltk_data')
 
 #----------------------------------------------------------------------------------------
 EnglishTerm = enchant.Dict("en_US")
