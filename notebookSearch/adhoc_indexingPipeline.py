@@ -21,6 +21,11 @@ import re
 ACCESS_TOKEN_Github= "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"
 ACCESS_TOKEN_Gitlab= "glpat-RLNz1MhmyeR7jcox_dyA"
 
+elasticsearch_url = os.environ['ELASTICSEARCH_URL']
+elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
+elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
+    elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
+
 # ----------------------------------------------------------------
 def open_file(file):
     read_path = file
@@ -29,7 +34,7 @@ def open_file(file):
     return data
 # ----------------------------------------------------------------
 def indexingpipeline():
-    es = Elasticsearch("http://localhost:9200")
+    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index('notebooks', es)
 
     if not es.indices.exists(index='notebooks'):

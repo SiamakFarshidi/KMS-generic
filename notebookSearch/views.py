@@ -15,8 +15,12 @@ import json
 import requests
 from bs4 import BeautifulSoup
 from spellchecker import SpellChecker
+import os
 
-es = Elasticsearch("http://localhost:9200")
+elasticsearch_url = os.environ['ELASTICSEARCH_URL']
+elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
+elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
+es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
 #-------------------------------------------------------------------------------------------
 ACCESS_TOKEN_Github= "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"
 ACCESS_TOKEN_Gitlab= "glpat-RLNz1MhmyeR7jcox_dyA"

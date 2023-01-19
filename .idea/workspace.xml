@@ -4,10 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="571093c8-f2ee-4953-9234-c3e566bb43f9" name="Changes" comment="commit">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="571093c8-f2ee-4953-9234-c3e566bb43f9" name="Changes" comment="fix db path">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opensemanticsearch/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/opensemanticsearch/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DSS/adhocCrawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/DSS/adhocCrawler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accountManagement/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_elastic/indexingPipeline/DatasetRecords.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset_elastic/indexingPipeline/DatasetRecords.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_elastic/indexingPipeline/adhoc_DatasetRecords.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset_elastic/indexingPipeline/adhoc_DatasetRecords.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_elastic/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset_elastic/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_elastic/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset_elastic/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/genericpages/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/genericpages/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebookSearch/adhoc_indexingPipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/notebookSearch/adhoc_indexingPipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebookSearch/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notebookSearch/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAPI/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/webAPI/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webSearch/indexingPipeline/adhoc_crawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/webSearch/indexingPipeline/adhoc_crawler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webSearch/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/webSearch/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,14 +41,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/alogo/workspace/KMS-generic/manage.py",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/alogo/workspace/KMS-generic/manage.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.manage">
     <configuration name="Unnamed" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="KMS" />
@@ -69,6 +79,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="SDK_NAME" value="Python 3.10 (KMS-generic)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -90,6 +101,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="SDK_NAME" value="Python 3.10 (KMS-generic)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -108,6 +120,9 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
+        <env name="ELASTICSEARCH_PASSWORD" value="QmwK9RxyDNdiqnvwMyZ7ykL5rO" />
+        <env name="ELASTICSEARCH_URL" value="https://lifewatch.lab.uvalight.net:32443/es1/" />
+        <env name="ELASTICSEARCH_USERNAME" value="elastic" />
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
@@ -125,6 +140,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.manage" />
       <item itemvalue="Python.manage-makemigrations" />
       <item itemvalue="Python.manage-migrate" />
@@ -189,6 +205,11 @@
           <url>file://$PROJECT_DIR$/DSS/views.py</url>
           <line>14</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/accountManagement/views.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
