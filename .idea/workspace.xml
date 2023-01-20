@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="571093c8-f2ee-4953-9234-c3e566bb43f9" name="Changes" comment="fix #3">
+    <list default="true" id="571093c8-f2ee-4953-9234-c3e566bb43f9" name="Changes" comment="added doc">
+      <change afterPath="$PROJECT_DIR$/django_app_setup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accountManagement/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_elastic/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset_elastic/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebookSearch/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notebookSearch/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,10 +40,15 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/alogo/workspace/KMS-generic/manage.py",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "last_opened_file_path": "/home/alogo/workspace/KMS-generic",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.manage">
     <configuration name="Unnamed" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="KMS" />
@@ -67,6 +77,14 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="ACCESS_TOKEN_Github" value="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" />
+        <env name="ACCESS_TOKEN_Gitlab" value="glpat-RLNz1MhmyeR7jcox_dyA" />
+        <env name="ELASTICSEARCH_PASSWORD" value="QmwK9RxyDNdiqnvwMyZ7ykL5rO" />
+        <env name="ELASTICSEARCH_URL" value="https://lifewatch.lab.uvalight.net:32443/es1/" />
+        <env name="ELASTICSEARCH_USERNAME" value="elastic" />
+        <env name="GITHUB_QUERY_URL" value="https://api.github.com/search/code?l=Jupyter+Notebook&amp;q=ipynb+in:path+extension:ipynb" />
+        <env name="KMS_ADMIN_PASSWORD" value="a!@$Ss234hjk" />
+        <env name="KMS_ADMIN_USERNAME" value="admin@uva.nl" />
       </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
       <option name="SDK_NAME" value="Python 3.10 (KMS-generic)" />
@@ -89,6 +107,14 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="ACCESS_TOKEN_Github" value="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" />
+        <env name="ACCESS_TOKEN_Gitlab" value="glpat-RLNz1MhmyeR7jcox_dyA" />
+        <env name="ELASTICSEARCH_PASSWORD" value="QmwK9RxyDNdiqnvwMyZ7ykL5rO" />
+        <env name="ELASTICSEARCH_URL" value="https://lifewatch.lab.uvalight.net:32443/es1/" />
+        <env name="ELASTICSEARCH_USERNAME" value="elastic" />
+        <env name="GITHUB_QUERY_URL" value="https://api.github.com/search/code?l=Jupyter+Notebook&amp;q=ipynb+in:path+extension:ipynb" />
+        <env name="KMS_ADMIN_PASSWORD" value="a!@$Ss234hjk" />
+        <env name="KMS_ADMIN_USERNAME" value="admin@uva.nl" />
       </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
       <option name="SDK_NAME" value="Python 3.10 (KMS-generic)" />
@@ -110,15 +136,15 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
         <env name="ACCESS_TOKEN_Github" value="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" />
         <env name="ACCESS_TOKEN_Gitlab" value="glpat-RLNz1MhmyeR7jcox_dyA" />
         <env name="ELASTICSEARCH_PASSWORD" value="QmwK9RxyDNdiqnvwMyZ7ykL5rO" />
         <env name="ELASTICSEARCH_URL" value="https://lifewatch.lab.uvalight.net:32443/es1/" />
         <env name="ELASTICSEARCH_USERNAME" value="elastic" />
         <env name="GITHUB_QUERY_URL" value="https://api.github.com/search/code?l=Jupyter+Notebook&amp;q=ipynb+in:path+extension:ipynb" />
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="KMS_ADMIN_USERNAME" value="admin@uva.nl" />
         <env name="KMS_ADMIN_PASSWORD" value="a!@$Ss234hjk" />
+        <env name="KMS_ADMIN_USERNAME" value="admin@uva.nl" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -188,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674210662718</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added doc">
+      <created>1674211242660</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1674211242660</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,17 +239,7 @@
     <MESSAGE value="commit" />
     <MESSAGE value="fix #1" />
     <MESSAGE value="fix #3" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix #3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/accountManagement/views.py</url>
-          <line>13</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="added doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="added doc" />
   </component>
 </project>

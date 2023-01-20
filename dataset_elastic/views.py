@@ -19,6 +19,7 @@ import requests
 from bs4 import BeautifulSoup
 from spellchecker import SpellChecker
 import os
+
 elasticsearch_url = os.environ['ELASTICSEARCH_URL']
 elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
 elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
@@ -112,8 +113,6 @@ def genericsearch(request):
         facet = request.GET['facet']
     except:
         facet = ''
-
-
     try:
         suggestedSearchTerm = request.GET['suggestedSearchTerm']
     except:
