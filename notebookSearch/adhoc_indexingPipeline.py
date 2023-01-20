@@ -18,13 +18,12 @@ from github import BadCredentialsException
 from github import Github
 import time
 import re
-ACCESS_TOKEN_Github= "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"
-ACCESS_TOKEN_Gitlab= "glpat-RLNz1MhmyeR7jcox_dyA"
+ACCESS_TOKEN_Github = os.environ['ACCESS_TOKEN_Github']
+ACCESS_TOKEN_Gitlab = os.environ['ACCESS_TOKEN_Gitlab']
 
 elasticsearch_url = os.environ['ELASTICSEARCH_URL']
 elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
-elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
-    elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
+elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
 
 # ----------------------------------------------------------------
 def open_file(file):

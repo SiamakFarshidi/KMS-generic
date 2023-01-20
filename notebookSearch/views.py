@@ -22,13 +22,13 @@ elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
 elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
 es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
 #-------------------------------------------------------------------------------------------
-ACCESS_TOKEN_Github= "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"
-ACCESS_TOKEN_Gitlab= "glpat-RLNz1MhmyeR7jcox_dyA"
+ACCESS_TOKEN_Github = os.environ['ACCESS_TOKEN_Github']
+ACCESS_TOKEN_Gitlab = os.environ['ACCESS_TOKEN_Gitlab']
+base_url = os.environ['GITHUB_QUERY_URL']
 
 # http request authentication
 header = {"Authorization": "token %s" % ACCESS_TOKEN_Github}
 # initialize query request parameters
-base_url = 'https://api.github.com/search/code?l=Jupyter+Notebook&q=ipynb+in:path+extension:ipynb'
 page_url = '&per_page=100'
 indexPath="/var/lib/opensemanticsearch/notebookSearch/Indexes.json"
 #-------------------------------------------------------------------------------------------
