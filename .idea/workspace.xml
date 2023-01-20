@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="571093c8-f2ee-4953-9234-c3e566bb43f9" name="Changes" comment="fix #3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebookSearch/adhoc_indexingPipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/notebookSearch/adhoc_indexingPipeline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebookSearch/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notebookSearch/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accountManagement/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,14 +31,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/alogo/workspace/KMS-generic/manage.py&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/alogo/workspace/KMS-generic/manage.py",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Python.manage">
     <configuration name="Unnamed" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="KMS" />
@@ -115,8 +115,10 @@
         <env name="ELASTICSEARCH_PASSWORD" value="QmwK9RxyDNdiqnvwMyZ7ykL5rO" />
         <env name="ELASTICSEARCH_URL" value="https://lifewatch.lab.uvalight.net:32443/es1/" />
         <env name="ELASTICSEARCH_USERNAME" value="elastic" />
-        <env name="PYTHONUNBUFFERED" value="1" />
         <env name="GITHUB_QUERY_URL" value="https://api.github.com/search/code?l=Jupyter+Notebook&amp;q=ipynb+in:path+extension:ipynb" />
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="KMS_ADMIN_USERNAME" value="admin@uva.nl" />
+        <env name="KMS_ADMIN_PASSWORD" value="a!@$Ss234hjk" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -179,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674141631092</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix #3">
+      <created>1674210662718</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1674210662718</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -202,11 +211,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/DSS/views.py</url>
-          <line>14</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/accountManagement/views.py</url>
           <line>13</line>
