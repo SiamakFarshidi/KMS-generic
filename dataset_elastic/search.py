@@ -1,8 +1,12 @@
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Search, Q
 
+elasticsearch_url = os.environ['ELASTICSEARCH_URL']
+elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
+elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
+
 def esearch(keywords="", gender=""):
-	client = Elasticsearch("http://localhost:9200")
+	client = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
 	q = Q("bool", should=[Q("match", keywords=keywords), 
 	Q("match", gender=gender)], minimum_should_match=1)
 	s = Search(using=client, index="envri").query(q)[:20]

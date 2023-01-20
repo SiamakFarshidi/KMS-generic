@@ -30,6 +30,11 @@ from spellchecker import SpellChecker
 import uuid
 
 nltk.download('words')
+
+elasticsearch_url = os.environ['ELASTICSEARCH_URL']
+elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
+elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
+
 words = set(nltk.corpus.words.words())
 ResearchInfrastructures={
     'icos-cp.eu': {
@@ -357,7 +362,7 @@ def uploadFromJsonStream(request):
                         _text_.append(doc[2])
 #-----------------------------------------------------------------------------------------------------------------------
 def saveRecord(doc):
-    es = Elasticsearch("http://localhost:9200")
+    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index('webcontents', es)
 
     if not es.indices.exists(index='webcontents'):
@@ -672,7 +677,7 @@ def potentialSearchTerm(term):
 #-----------------------------------------------------------------------------------------------------------------------
 
 def getSearchResults(request, facet, filter, searchtype, page, term):
-    es = Elasticsearch("http://localhost:9200")
+    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index('webcontents', es)
 
     if filter!="" and facet!="":
@@ -965,7 +970,7 @@ def sendFeedback(request):
     if request.method == 'POST':
         data = json.load(request)
 
-        es = Elasticsearch("http://localhost:9200")
+        es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
         index = Index('userfeedback', es)
 
         if not es.indices.exists(index='userfeedback'):

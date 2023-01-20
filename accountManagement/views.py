@@ -1,10 +1,16 @@
 from django.shortcuts import render
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Search, Index
+import  os
 # Create your views here.
+elasticsearch_url = os.environ['ELASTICSEARCH_URL']
+elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
+elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
+kms_admin_username = os.environ.get('KMS_ADMIN_USERNAME')
+kms_admin_password = os.environ.get('KMS_ADMIN_PASSWORD')
 
 def login(request):
-    es = Elasticsearch("http://localhost:9200")
+    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index('accountmanagement', es)
 
     try:
@@ -22,7 +28,7 @@ def login(request):
             index={'mapping': {'ignore_malformed': True}}
         )
         index.create()
-        res = es.index(index="accountmanagement", id= id, body={"username":"admin@uva.nl", "password":"a!@$Ss234hjk"})
+        res = es.index(index="accountmanagement", id= id, body={"username":kms_admin_username, "password":kms_admin_password})
     else:
         es.indices.close(index='accountmanagement')
         put = es.indices.put_settings(

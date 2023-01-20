@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="571093c8-f2ee-4953-9234-c3e566bb43f9" name="Changes" comment="commit">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="571093c8-f2ee-4953-9234-c3e566bb43f9" name="Changes" comment="fix #3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opensemanticsearch/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/opensemanticsearch/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accountManagement/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +36,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "last_opened_file_path": "/home/alogo/workspace/KMS-generic/manage.py",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RunManager" selected="Python.manage">
@@ -69,6 +69,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="SDK_NAME" value="Python 3.10 (KMS-generic)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -90,6 +91,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="SDK_NAME" value="Python 3.10 (KMS-generic)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -108,7 +110,15 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
+        <env name="ACCESS_TOKEN_Github" value="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" />
+        <env name="ACCESS_TOKEN_Gitlab" value="glpat-RLNz1MhmyeR7jcox_dyA" />
+        <env name="ELASTICSEARCH_PASSWORD" value="QmwK9RxyDNdiqnvwMyZ7ykL5rO" />
+        <env name="ELASTICSEARCH_URL" value="https://lifewatch.lab.uvalight.net:32443/es1/" />
+        <env name="ELASTICSEARCH_USERNAME" value="elastic" />
+        <env name="GITHUB_QUERY_URL" value="https://api.github.com/search/code?l=Jupyter+Notebook&amp;q=ipynb+in:path+extension:ipynb" />
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="KMS_ADMIN_USERNAME" value="admin@uva.nl" />
+        <env name="KMS_ADMIN_PASSWORD" value="a!@$Ss234hjk" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -125,6 +135,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.manage" />
       <item itemvalue="Python.manage-makemigrations" />
       <item itemvalue="Python.manage-migrate" />
@@ -163,7 +174,21 @@
       <option name="project" value="LOCAL" />
       <updated>1663153079867</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix #3">
+      <created>1674141631091</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1674141631092</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix #3">
+      <created>1674210662718</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1674210662718</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -180,15 +205,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
     <MESSAGE value="fix #1" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix #1" />
+    <MESSAGE value="fix #3" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix #3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/DSS/views.py</url>
-          <line>14</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/accountManagement/views.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

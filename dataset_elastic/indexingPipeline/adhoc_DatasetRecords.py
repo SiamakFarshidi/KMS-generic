@@ -70,6 +70,9 @@ acceptedSimilarityThreshold=0.75
 CommonSubsetThreshold=0.0
 contextualInfo=""
 #----------------------------------------------------------------------------------------
+elasticsearch_url = os.environ['ELASTICSEARCH_URL']
+elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
+elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
 #-------------------Lifewatch
 def getDatasetRecords__LifeWatch():
     driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -1334,7 +1337,7 @@ def saveSelectedURLs(lstDataset, datasetTitle):
 # if index exists, change settings
 
 def Run_indexingPipeline_ingest_indexFiles():
-    es = Elasticsearch("http://localhost:9200")
+    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index('envri', es)
 
     if not es.indices.exists(index='envri'):
@@ -1456,7 +1459,7 @@ def deleteAllIndexFilesByExtension(extension):
         os.remove(path_to_file)
 # ----------------------------------------------------------------------
 def if_URL_exist(url):
-    es = Elasticsearch("http://localhost:9200")
+    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index('envri', es)
 
     if not es.indices.exists(index='envri'):

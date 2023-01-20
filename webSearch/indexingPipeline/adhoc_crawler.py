@@ -41,6 +41,9 @@ extensionList = json.loads(r''+extensionList.read())
 ResearchInfrastructures=open('ResearchInfrastructures.json',"r")
 ResearchInfrastructures = json.loads(r''+ResearchInfrastructures.read())
 
+elasticsearch_url = os.environ['ELASTICSEARCH_URL']
+elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
+elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
 #-----------------------------------------------------------------------------------------------------------------------
 def is_valid(url):
     """
@@ -381,7 +384,7 @@ def indexWebsite(url):
                 print("Metadata ingested ("+str(cnt)+")\n")
 #-----------------------------------------------------------------------------------------------------------------------
 def if_URL_exist(url):
-    es = Elasticsearch("http://localhost:9200")
+    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index('webcontents', es)
 
     if not es.indices.exists(index='webcontents'):
@@ -421,7 +424,7 @@ def if_URL_exist(url):
     return True if numHits>0 else False
 #-----------------------------------------------------------------------------------------------------------------------
 def ingest_metadataFile(metadataFile):
-    es = Elasticsearch("http://localhost:9200")
+    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index('webcontents', es)
 
     if not es.indices.exists(index='webcontents'):

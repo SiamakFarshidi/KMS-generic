@@ -2,9 +2,14 @@ from django.shortcuts import render
 from elasticsearch import Elasticsearch
 import json
 import numpy as np
+import os
+
+elasticsearch_url = os.environ['ELASTICSEARCH_URL']
+elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
+elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
 
 # Create your views here.
-es = Elasticsearch("http://localhost:9200")
+es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
 #---------------------------------------------------------------------------------------------------------------------
 def landingpage(request):
     return render(request,'landingpage.html',{})
