@@ -24,7 +24,6 @@ es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elastics
 #-------------------------------------------------------------------------------------------
 ACCESS_TOKEN_Github = os.environ['ACCESS_TOKEN_Github']
 ACCESS_TOKEN_Gitlab = os.environ['ACCESS_TOKEN_Gitlab']
-base_url = os.environ['GITHUB_QUERY_URL']
 
 # http request authentication
 header = {"Authorization": "token %s" % ACCESS_TOKEN_Github}
