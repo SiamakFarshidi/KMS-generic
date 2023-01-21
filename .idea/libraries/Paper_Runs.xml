@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Paper Runs">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/dataset_elastic/indexingPipeline/index files/Paper Runs.zip!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
