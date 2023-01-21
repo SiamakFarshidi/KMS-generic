@@ -33,6 +33,9 @@ external_urls = set()
 permitted_urls=set()
 urllib3.disable_warnings()
 #-----------------------------------------------------------------------------------------------------------------------
+elasticsearch_url = os.environ['ELASTICSEARCH_URL']
+elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
+elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
 # number of urls visited so far will be stored here
 max_urls=999999
 test=False
@@ -609,7 +612,7 @@ def saveMetadataInFile(metadata):
 def ingest_metadataFile(metadataFile):
     global config
 
-    es = Elasticsearch("http://localhost:9200")
+    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index(config['decision_model'], es)
 
     if not es.indices.exists(index=config['decision_model']):
@@ -850,7 +853,7 @@ def is_not_crawled(features):
 
     global config
 
-    es = Elasticsearch("http://localhost:9200")
+    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index(config['decision_model'], es)
 
     if not es.indices.exists(index=config['decision_model']):
@@ -914,7 +917,7 @@ def open_file(file):
     return data
 #-----------------------------------------------------------------------------------------------------------------------
 def ingestIndexes(decisionModel, sourceDirectory, equalityCheckFeature,isArray):
-    es = Elasticsearch("http://localhost:9200")
+    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index(decisionModel, es)
 
     if not es.indices.exists(index=decisionModel):

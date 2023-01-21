@@ -45,6 +45,9 @@ aggregares={
     },
 }
 
+elasticsearch_url = os.environ['ELASTICSEARCH_URL']
+elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
+elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
 #-----------------------------------------------------------------------------------------------------------------------
 def aggregates(request):
 
@@ -95,7 +98,7 @@ def genericsearch(request):
 
 #-----------------------------------------------------------------------------------------------------------------------
 def getSearchResults(request, facet, filter, page, term):
-    es = Elasticsearch("http://localhost:9200")
+    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index('webapi', es)
     if filter!="" and facet!="":
         saved_list = request.session['filters']
@@ -265,7 +268,7 @@ def potentialSearchTerm(term):
 #-----------------------------------------------------------------------------------------------------------------------
 # Create your views here.
 def indexingpipeline(request):
-    es = Elasticsearch("http://localhost:9200")
+    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index('webapi', es)
 
     if not es.indices.exists(index='webapi'):

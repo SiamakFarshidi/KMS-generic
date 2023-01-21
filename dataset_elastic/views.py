@@ -18,9 +18,13 @@ import json
 import requests
 from bs4 import BeautifulSoup
 from spellchecker import SpellChecker
+import os
 
+elasticsearch_url = os.environ['ELASTICSEARCH_URL']
+elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
+elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
 
-es = Elasticsearch("http://localhost:9200")
+es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
 
 aggregares={
     "ResearchInfrastructure":{
@@ -109,8 +113,6 @@ def genericsearch(request):
         facet = request.GET['facet']
     except:
         facet = ''
-
-
     try:
         suggestedSearchTerm = request.GET['suggestedSearchTerm']
     except:
@@ -133,7 +135,7 @@ def genericsearch(request):
 
 #-----------------------------------------------------------------------------------------------------------------------
 def getSearchResults(request, facet, filter, page, term):
-    es = Elasticsearch("http://localhost:9200")
+    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
     if filter!="" and facet!="":
         saved_list = request.session['filters']
         saved_list.append({"term": {facet+".keyword": filter}})
