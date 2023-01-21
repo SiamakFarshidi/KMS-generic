@@ -1,3 +1,4 @@
+[![Build and push container](https://github.com/QCDIS/KMS-generic/actions/workflows/make-relese.yml/badge.svg)](https://github.com/QCDIS/KMS-generic/actions/workflows/make-relese.yml)
 # envri-kbs
 
 ```
