@@ -1,0 +1,22 @@
+name: build container
+on:
+  [pull_request,push]
+
+env:
+  DOCKERFILE:  Dockerfile
+  TAG:  kms-generic
+  DOCKERHUB_IMAGE_ID: "qcdis/"
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build docker
+        run: |
+          cd  search_engine_app && docker build . --file $DOCKERFILE -t $TAG
+
+      - name: Start docker
+        run: |
+          docker run -d -p 8000:8000 -host=172.17.0.2 $TAG:latest
