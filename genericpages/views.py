@@ -1,8 +1,8 @@
+import json
+import os
+
 from django.shortcuts import render
 from elasticsearch import Elasticsearch
-import json
-import numpy as np
-import os
 
 elasticsearch_url = os.environ['ELASTICSEARCH_URL']
 elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
@@ -17,7 +17,7 @@ def landing_page(request):
     context = {
         'base_path': base_path,
     }
-    return render(request, 'landingpage.html', context=context)
+    return render(request, 'landingpage.html', context)
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -53,16 +53,16 @@ def generic_pages(request):
                       {'searchTerm': term, 'functionList': getAllfunctionList(request), 'base_path': base_path})
     # ----------------------------------------------
     elif page == 'pieChart':
-        id, dataset_nodes1, dataset_edges1, numHits1 = graphV_dataset(100, term)
-        id, dataset_nodes2, dataset_edges2, numHits2 = graphV_webSearch(id, term)
-        id, dataset_nodes3, dataset_edges3, numHits3 = graphV_webAPI(id, term)
+        id, dataset_nodes1, dataset_edges1, num_hits1 = graphV_dataset(100, term)
+        id, dataset_nodes2, dataset_edges2, num_hits2 = graphV_webSearch(id, term)
+        id, dataset_nodes3, dataset_edges3, num_hits3 = graphV_webAPI(id, term)
 
-        sum = (numHits1 + numHits2 + numHits3) + 1
+        sum = (num_hits1 + num_hits2 + num_hits3) + 1
 
         dataPoints = [
-            {'y': numHits2 / sum * 100, 'label': 'Webpages'},
-            {'y': numHits1 / sum * 100, 'label': 'Dataset'},
-            {'y': numHits3 / sum * 100, 'label': 'Web APIs'}
+            {'y': num_hits2 / sum * 100, 'label': 'Webpages'},
+            {'y': num_hits1 / sum * 100, 'label': 'Dataset'},
+            {'y': num_hits3 / sum * 100, 'label': 'Web APIs'}
         ]
 
         return render(request, 'pieChart.html', {
@@ -75,9 +75,9 @@ def generic_pages(request):
     elif page == 'graphV':
         try:
             Query['label'] = 'Query: ' + term
-            id, dataset_nodes1, dataset_edges1, numHits1 = graphV_dataset(100, term)
-            id, dataset_nodes2, dataset_edges2, numHits2 = graphV_webSearch(id, term)
-            id, dataset_nodes3, dataset_edges3, numHits3 = graphV_webAPI(id, term)
+            id, dataset_nodes1, dataset_edges1, num_hits1 = graphV_dataset(100, term)
+            id, dataset_nodes2, dataset_edges2, num_hits2 = graphV_webSearch(id, term)
+            id, dataset_nodes3, dataset_edges3, num_hits3 = graphV_webAPI(id, term)
 
             dataset_nodes4 = mergeList(dataset_nodes1, dataset_nodes2)
             dataset_edges4 = mergeList(dataset_edges1, dataset_edges2)
@@ -107,12 +107,12 @@ def generic_pages(request):
 
 # ---------------------------------------------------------------------------------------------------------------------
 def getResearchInfrastructure(url):
-    lstRI = []
-    for RI in ResearchInfrastructures:
+    lst_ri = []
+    for RI in research_infrastructures:
         if RI in url:
-            if (ResearchInfrastructures2[RI]['acronym'] not in lstRI):
-                lstRI.append(ResearchInfrastructures2[RI]['acronym'])
-    return lstRI
+            if (ResearchInfrastructures2[RI]['acronym'] not in lst_ri):
+                lst_ri.append(ResearchInfrastructures2[RI]['acronym'])
+    return lst_ri
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -312,7 +312,7 @@ ResearchInfrastructures2 = {
     }
 }
 
-ResearchInfrastructures = {
+research_infrastructures = {
     'icos-cp.eu': {
         'id': 1,
         'url': 'https://www.icos-cp.eu/',
@@ -696,10 +696,10 @@ ResearchInfrastructures = {
 
 # ---------------------------------------------------------------------------------------------------------------------
 def detectRI(url):
-    for RI in ResearchInfrastructures:
+    for ri in research_infrastructures:
         for r in url:
-            if RI in r:
-                return RI
+            if ri in r:
+                return ri
     return 'KB'
 
 
@@ -719,7 +719,7 @@ def createNode(id, caption, url, tooltip, img, size=12):
         else:
             tool = t
 
-    newNode = {
+    new_node = {
         'id': id,
         'url': url.replace('json', ''),
         'label': cap[:30] + (cap[30:] and '...'),
@@ -728,17 +728,17 @@ def createNode(id, caption, url, tooltip, img, size=12):
         'image': img,
         'size': size,
     }
-    return newNode
+    return new_node
 
 
 # ---------------------------------------------------------------------------------------------------------------------
 def createEdge(from_node_id, to_node_id):
-    Newedge = {'from': from_node_id, 'to': to_node_id, 'title': ''}
-    return Newedge
+    new_edge = {'from': from_node_id, 'to': to_node_id, 'title': ''}
+    return new_edge
 
 
 # ---------------------------------------------------------------------------------------------------------------------
-def graphV_dataset(id, searchValue):
+def graphV_dataset(id, search_value):
     user_request = 'some_param'
     query_body = {
         'from': 0,
@@ -747,7 +747,7 @@ def graphV_dataset(id, searchValue):
             'bool': {
                 'must': {
                     'multi_match': {
-                        'query': searchValue,
+                        'query': search_value,
                         'fields': ['description', 'keywords', 'contact', 'publisher', 'citation',
                                    'genre', 'creator', 'headline', 'abstract', 'theme', 'producer', 'author',
                                    'sponsor', 'provider', 'name', 'measurementTechnique', 'maintainer', 'editor',
@@ -765,17 +765,17 @@ def graphV_dataset(id, searchValue):
     }
 
     result = es.search(index='envri', body=query_body)
-    numHits = result['hits']['total']['value']
+    num_hits = result['hits']['total']['value']
 
-    lstDataset = {}
-    lstAddedRIs = []
+    lst_dataset = {}
+    lst_added_ris = []
     nodes = []
     edges = []
     nodes.append(Query)
 
     for searchResult in result['hits']['hits']:
         result = searchResult['_source']
-        RI = detectRI(result['url'])
+        ri = detectRI(result['url'])
 
         url = result['url'][0]
         caption = result['description']
@@ -783,24 +783,24 @@ def graphV_dataset(id, searchValue):
         id = id + 1
         img = '/static/images/dataset.png'
 
-        if RI not in lstAddedRIs:
-            lstAddedRIs.append(RI)
-            nodes.append(ResearchInfrastructures[RI])
-            edges.append(createEdge(Query['id'], ResearchInfrastructures[RI]['id']))
-            nodes.append(createNode(id, ['Datasets'], ResearchInfrastructures[RI]['url'], ['Datasets'],
+        if ri not in lst_added_ris:
+            lst_added_ris.append(ri)
+            nodes.append(research_infrastructures[ri])
+            edges.append(createEdge(Query['id'], research_infrastructures[ri]['id']))
+            nodes.append(createNode(id, ['Datasets'], research_infrastructures[ri]['url'], ['Datasets'],
                                     '/static/images/datasetCollectionlogo.png', 30))
-            lstDataset[RI] = id
-            edges.append(createEdge(ResearchInfrastructures[RI]['id'], lstDataset[RI]))
+            lst_dataset[ri] = id
+            edges.append(createEdge(research_infrastructures[ri]['id'], lst_dataset[ri]))
             id = id + 1
 
         nodes.append(createNode(id, caption, url, tooltip, img))
-        edges.append(createEdge(lstDataset[RI], id))
+        edges.append(createEdge(lst_dataset[ri], id))
 
-    return id, nodes, edges, numHits
+    return id, nodes, edges, num_hits
 
 
 # ---------------------------------------------------------------------------------------------------------------------
-def graphV_webSearch(id, searchValue):
+def graphV_webSearch(id, search_value):
     user_request = 'some_param'
     query_body = {
         'from': 0,
@@ -809,7 +809,7 @@ def graphV_webSearch(id, searchValue):
             'bool': {
                 'must': {
                     'multi_match': {
-                        'query': searchValue,
+                        'query': search_value,
                         'fields': ['title', 'pageContetnts', 'organizations', 'topics',
                                    'people', 'workOfArt', 'files', 'locations', 'dates',
                                    'researchInfrastructure'],
@@ -822,10 +822,10 @@ def graphV_webSearch(id, searchValue):
     }
 
     result = es.search(index='webcontents', body=query_body)
-    numHits = result['hits']['total']['value']
+    num_hits = result['hits']['total']['value']
 
-    lstWebpages = {}
-    lstAddedRIs = []
+    lst_webpages = {}
+    lst_added_ris = []
     nodes = []
     edges = []
     nodes.append(Query)
@@ -833,7 +833,7 @@ def graphV_webSearch(id, searchValue):
     for searchResult in result['hits']['hits']:
 
         result = searchResult['_source']
-        RI = detectRI(result['url'])
+        ri = detectRI(result['url'])
 
         url = result['url'][0]
         caption = result['title']
@@ -841,24 +841,24 @@ def graphV_webSearch(id, searchValue):
         id = id + 1
         img = '/static/images/webpageslogo.png'
 
-        if RI not in lstAddedRIs:
-            lstAddedRIs.append(RI)
-            nodes.append(ResearchInfrastructures[RI])
-            edges.append(createEdge(Query['id'], ResearchInfrastructures[RI]['id']))
-            nodes.append(createNode(id, ['Webpages'], ResearchInfrastructures[RI]['url'], ['Webpages'],
+        if ri not in lst_added_ris:
+            lst_added_ris.append(ri)
+            nodes.append(research_infrastructures[ri])
+            edges.append(createEdge(Query['id'], research_infrastructures[ri]['id']))
+            nodes.append(createNode(id, ['Webpages'], research_infrastructures[ri]['url'], ['Webpages'],
                                     '/static/images/websitelogo.png', 30))
-            lstWebpages[RI] = id
-            edges.append(createEdge(ResearchInfrastructures[RI]['id'], lstWebpages[RI]))
+            lst_webpages[ri] = id
+            edges.append(createEdge(research_infrastructures[ri]['id'], lst_webpages[ri]))
             id = id + 1
 
         nodes.append(createNode(id, caption, url, tooltip, img))
-        edges.append(createEdge(lstWebpages[RI], id))
+        edges.append(createEdge(lst_webpages[ri], id))
 
-    return id, nodes, edges, numHits
+    return id, nodes, edges, num_hits
 
 
 # ---------------------------------------------------------------------------------------------------------------------
-def graphV_webAPI(id, searchValue):
+def graphV_webAPI(id, search_value):
     user_request = 'some_param'
     query_body = {
         'from': 0,
@@ -867,7 +867,7 @@ def graphV_webAPI(id, searchValue):
             'bool': {
                 'must': {
                     'multi_match': {
-                        'query': searchValue,
+                        'query': search_value,
                         'fields': ['name', 'description', 'category', 'provider', 'serviceType', 'architecturalStyle'],
                         'type': 'best_fields',
                         'minimum_should_match': '50%'
@@ -878,7 +878,7 @@ def graphV_webAPI(id, searchValue):
     }
 
     result = es.search(index='webapi', body=query_body)
-    numHits = result['hits']['total']['value']
+    num_hits = result['hits']['total']['value']
 
     lstWebAPIs = {}
     lstAddedRIs = []
@@ -897,18 +897,18 @@ def graphV_webAPI(id, searchValue):
 
         if RI not in lstAddedRIs:
             lstAddedRIs.append(RI)
-            nodes.append(ResearchInfrastructures[RI])
-            edges.append(createEdge(Query['id'], ResearchInfrastructures[RI]['id']))
-            nodes.append(createNode(id, ['Web API'], ResearchInfrastructures[RI]['url'], ['Web API'],
+            nodes.append(research_infrastructures[RI])
+            edges.append(createEdge(Query['id'], research_infrastructures[RI]['id']))
+            nodes.append(createNode(id, ['Web API'], research_infrastructures[RI]['url'], ['Web API'],
                                     '/static/images/WebAPIsLogo.png', 30))
             lstWebAPIs[RI] = id
-            edges.append(createEdge(ResearchInfrastructures[RI]['id'], lstWebAPIs[RI]))
+            edges.append(createEdge(research_infrastructures[RI]['id'], lstWebAPIs[RI]))
             id = id + 1
 
         nodes.append(createNode(id, caption, url, tooltip, img))
         edges.append(createEdge(lstWebAPIs[RI], id))
 
-    return id, nodes, edges, numHits
+    return id, nodes, edges, num_hits
 
 
 # -----------------------------------------------------------------------------------------------------------------------
@@ -918,9 +918,9 @@ def getAllfunctionList(request):
     if not 'MyBasket' in request.session or not request.session['MyBasket']:
         request.session['MyBasket'] = []
 
-    functionList = ""
+    function_list = ""
     saved_list = request.session['MyBasket']
     for item in saved_list:
-        functionList = functionList + r"modifyCart({'operation':'add','type':'" + item['type'] + "','title':'" + item[
+        function_list = function_list + r"modifyCart({'operation':'add','type':'" + item['type'] + "','title':'" + item[
             'title'] + "','url':'" + item['url'] + "','id':'" + item['id'] + "' });"
-    return functionList
+    return function_list

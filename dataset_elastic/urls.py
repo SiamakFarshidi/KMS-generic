@@ -1,8 +1,6 @@
-from django.conf.urls import include
 from django.urls import re_path
-from dataset_elastic import views,models
-from django.conf.urls.static import static
 
+from dataset_elastic import views
 
 urlpatterns = [
 	#re_path(r'^index', views.index, name='index'),

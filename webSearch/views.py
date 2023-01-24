@@ -23,6 +23,7 @@ nltk.download('words')
 elasticsearch_url = os.environ['ELASTICSEARCH_URL']
 elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
 elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
+base_path = os.environ.get('BASE_PATH', '/')
 
 words = set(nltk.corpus.words.words())
 ResearchInfrastructures = {
@@ -634,6 +635,7 @@ def generic_search(request):
     else:
         html_render = 'webcontent_results.html'
 
+    search_results['base_path'] = base_path
     return render(request, html_render, search_results)
 
 
@@ -725,9 +727,7 @@ def get_search_results(request, facet, filter, searchtype, page, term):
             },
             'aggs': aggregares
         }
-
         result = es.search(index='webcontents', body=query_body)
-
 
     lst_results = []
     lst_image_filename = []
@@ -891,6 +891,7 @@ def downloadCart(request):
                       "Datasets": Datasets,
                       "Web APIs": WebAPIs,
                       "Notebooks": Notebooks,
+                      'base_path': base_path
                   }
                   )
 

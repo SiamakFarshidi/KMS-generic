@@ -1,16 +1,19 @@
 from django.shortcuts import render
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Search, Index
-import  os
+import os
+
 # Create your views here.
 elasticsearch_url = os.environ['ELASTICSEARCH_URL']
 elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
 elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
 kms_admin_username = os.environ.get('KMS_ADMIN_USERNAME')
 kms_admin_password = os.environ.get('KMS_ADMIN_PASSWORD')
+base_path = os.environ.get('BASE_PATH', '/')
+
 
 def login(request):
-    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
+    es = Elasticsearch(elasticsearch_url, http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index('accountmanagement', es)
 
     try:
@@ -22,13 +25,13 @@ def login(request):
     except:
         password = ''
 
-
     if not es.indices.exists(index='accountmanagement'):
         index.settings(
             index={'mapping': {'ignore_malformed': True}}
         )
         index.create()
-        res = es.index(index="accountmanagement", id= id, body={"username":kms_admin_username, "password":kms_admin_password})
+        res = es.index(index="accountmanagement", id=id,
+                       body={"username": kms_admin_username, "password": kms_admin_password})
     else:
         es.indices.close(index='accountmanagement')
         put = es.indices.put_settings(
@@ -42,10 +45,9 @@ def login(request):
             })
         es.indices.open(index='accountmanagement')
 
-
     user_request = "some_param"
     query_body = {
-        "size" : 1,
+        "size": 1,
         "query": {
             "bool": {
                 "must": [
@@ -65,4 +67,4 @@ def login(request):
     }
     result = es.search(index="accountmanagement", body=query_body)
     print(result)
-    return render(request,'login.html',{"username": username, "password":password})
+    return render(request, 'login.html', {"username": username, "password": password, 'base_path': base_path})
