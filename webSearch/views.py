@@ -735,7 +735,7 @@ def get_search_results(request, facet, filter, searchtype, page, term):
         lst_results.append(search_result['_source'])
         if searchtype == 'imagesearch':
             url = search_result['_source']['url']
-            research_infrastructure = search_result['_source']['ResearchInfrastructure']
+            research_infrastructure = search_result['_source']['researchInfrastructure']
             for img in search_result['_source']['images']:
                 a = urlparse(img)
                 filename = os.path.basename(a.path)
@@ -744,7 +744,7 @@ def get_search_results(request, facet, filter, searchtype, page, term):
                 if filename not in lst_image_filename:
                     lst_image_filename.append(filename)
                     image = {'imageURL': img, 'imageWebpage': url[0], 'filename': filename_without_ext,
-                             'extension': extension, 'ResearchInfrastructure': research_infrastructure[0]}
+                             'extension': extension, 'researchInfrastructure': research_infrastructure[0]}
                     lst_image_url.append(image)
     # ......................
     files = []
