@@ -24,41 +24,43 @@ elasticsearch_url = os.environ['ELASTICSEARCH_URL']
 elasticsearch_username = os.environ.get('ELASTICSEARCH_USERNAME')
 elasticsearch_password = os.environ.get('ELASTICSEARCH_PASSWORD')
 
-es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
+es = Elasticsearch(elasticsearch_url, http_auth=[elasticsearch_username, elasticsearch_password])
 
-aggregares={
-    "ResearchInfrastructure":{
-        "terms":{
+aggregares = {
+    "ResearchInfrastructure": {
+        "terms": {
             "field": "ResearchInfrastructure.keyword",
             "size": 50,
         }
     },
-    "spatialCoverage":{
-        "terms":{
+    "spatialCoverage": {
+        "terms": {
             "field": "spatialCoverage.keyword",
             "size": 50,
         }
     },
-    "theme":{
-        "terms":{
+    "theme": {
+        "terms": {
             "field": "theme.keyword",
             "size": 50,
         }
     },
-    "publisher":{
-        "terms":{
+    "publisher": {
+        "terms": {
             "field": "publisher.keyword",
             "size": 50,
         }
     },
-    "measurementTechnique":{
-        "terms":{
+    "measurementTechnique": {
+        "terms": {
             "field": "measurementTechnique.keyword",
             "size": 50,
         }
     },
 }
-#-------------------------------------------------------------------------------------------
+
+
+# -------------------------------------------------------------------------------------------
 def indexingpipeline(request):
     print("indexing...")
     try:
@@ -66,33 +68,37 @@ def indexingpipeline(request):
     except:
         RI = ''
 
-    if RI=="ICOS":
+    if RI == "ICOS":
         DatasetRecords.Run_indexingPipeline_ICOS()
-    elif RI=="CDI":
+    elif RI == "CDI":
         DatasetRecords.Run_indexingPipeline_SeaDataNet_CDI()
-    elif RI=="EDMED":
+    elif RI == "EDMED":
         DatasetRecords.Run_indexingPipeline_SeaDataNet_EDMED()
-    elif RI=="LifeWatch":
+    elif RI == "LifeWatch":
         DatasetRecords.Run_indexingPipeline_LifeWatch()
 
     response_data = {}
     response_data['result'] = RI
-    response_data['message'] = 'The indexing process of the '+RI+' dataset repository has been initiated!'
+    response_data['message'] = 'The indexing process of the ' + RI + ' dataset repository has been initiated!'
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
-#----------------------------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------------------------
 def aggregates(request):
     query_body = {
-        "from" : page,
-        "size" : 10,
+        "from": page,
+        "size": 10,
         "query": {
             "match_all": {}
         },
-        "aggs":aggregares
+        "aggs": aggregares
     }
     result = es.search(index="envri", body=query_body)
     return JsonResponse(result, safe=True, json_dumps_params={'ensure_ascii': False})
-#----------------------------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------------------------
 def genericsearch(request):
     try:
         term = request.GET['term']
@@ -118,215 +124,238 @@ def genericsearch(request):
     except:
         suggestedSearchTerm = ''
 
-    searchResults=getSearchResults(request, facet, filter, page, term)
+    searchResults = getSearchResults(request, facet, filter, page, term)
 
-    if(suggestedSearchTerm != ""):
-        searchResults["suggestedSearchTerm"]=""
+    if (suggestedSearchTerm != ""):
+        searchResults["suggestedSearchTerm"] = ""
     else:
-        suggestedSearchTerm=""
-        if searchResults["NumberOfHits"]==0:
-            suggestedSearchTerm= potentialSearchTerm(term)
-            searchResults=getSearchResults(request, facet, filter, page, "*")
-            searchResults["NumberOfHits"]=0
-            searchResults["searchTerm"]=term
-            searchResults["suggestedSearchTerm"]=suggestedSearchTerm
+        suggestedSearchTerm = ""
+        if searchResults["NumberOfHits"] == 0:
+            suggestedSearchTerm = potential_search_term(term)
+            searchResults = getSearchResults(request, facet, filter, page, "*")
+            searchResults["NumberOfHits"] = 0
+            searchResults["searchTerm"] = term
+            searchResults["suggestedSearchTerm"] = suggestedSearchTerm
 
-    return render(request,'dataset_results.html',searchResults )
+    return render(request, 'dataset_results.html', searchResults)
 
-#-----------------------------------------------------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------------------------------------------------
 def getSearchResults(request, facet, filter, page, term):
-    es = Elasticsearch(elasticsearch_url,http_auth=[elasticsearch_username, elasticsearch_password])
-    if filter!="" and facet!="":
+    es = Elasticsearch(elasticsearch_url, http_auth=[elasticsearch_username, elasticsearch_password])
+    if filter != "" and facet != "":
         saved_list = request.session['filters']
-        saved_list.append({"term": {facet+".keyword": filter}})
+        saved_list.append({"term": {facet + ".keyword": filter}})
         request.session['filters'] = saved_list
     else:
         if 'filters' in request.session:
             del request.session['filters']
-        request.session['filters']=[]
+        request.session['filters'] = []
 
-    page=(int(page)-1)*10
-    result={}
-    if term=="*" or term=="top10":
+    page = (int(page) - 1) * 10
+    result = {}
+    if term == "*" or term == "top10":
         result = es.search(
             index="envri",
             body={
-                "from" : page,
-                "size" : 10,
+                "from": page,
+                "size": 10,
                 "query": {
-                    "bool" : {
-                        "must" : {
+                    "bool": {
+                        "must": {
                             "match_all": {}
                         },
                         "filter": {
-                            "bool" : {
-                                "must" :request.session.get('filters')
+                            "bool": {
+                                "must": request.session.get('filters')
                             }
                         }
                     }
                 },
-                "aggs":aggregares
+                "aggs": aggregares
             }
         )
     else:
         user_request = "some_param"
         query_body = {
-            "from" : page,
-            "size" : 10,
+            "from": page,
+            "size": 10,
             "query": {
                 "bool": {
                     "must": {
-                        "multi_match" : {
+                        "multi_match": {
                             "query": term,
-                            "fields": [ "description", "keywords", "contact", "publisher", "citation",
-                                        "genre", "creator", "headline", "abstract", "theme", "producer", "author",
-                                        "sponsor", "provider", "name", "measurementTechnique", "maintainer", "editor",
-                                        "copyrightHolder", "contributor", "contentLocation", "about", "rights", "useConstraints",
-                                        "status", "scope", "metadataProfile", "metadataIdentifier", "distributionInfo", "dataQualityInfo",
-                                        "contentInfo", "ResearchInfrastructure", "EssentialVariables", "potentialTopics"],
+                            "fields": ["description", "keywords", "contact", "publisher", "citation",
+                                       "genre", "creator", "headline", "abstract", "theme", "producer", "author",
+                                       "sponsor", "provider", "name", "measurementTechnique", "maintainer", "editor",
+                                       "copyrightHolder", "contributor", "contentLocation", "about", "rights",
+                                       "useConstraints",
+                                       "status", "scope", "metadataProfile", "metadataIdentifier", "distributionInfo",
+                                       "dataQualityInfo",
+                                       "contentInfo", "ResearchInfrastructure", "EssentialVariables",
+                                       "potentialTopics"],
                             "type": "best_fields",
                             "minimum_should_match": "50%"
                         }
                     },
                     "filter": {
-                        "bool" : {
-                            "must" :request.session.get('filters')
+                        "bool": {
+                            "must": request.session.get('filters')
                         }
                     }
                 }
             },
-            "aggs":aggregares
+            "aggs": aggregares
         }
 
         result = es.search(index="envri", body=query_body)
 
-    lstResults=[]
-    LocationspatialCoverage=[]
-    spatialCounter=0
+    lstResults = []
+    LocationspatialCoverage = []
+    spatialCounter = 0
     for searchResult in result['hits']['hits']:
         lstResults.append(searchResult['_source'])
         for potentialocation in searchResult['_source']['spatialCoverage']:
-            location=re.sub(r'[^A-Za-z0-9 ]+', '', potentialocation)
-            if (location!="") and (location!="None") and (len(location)<20) and (location not in LocationspatialCoverage) and (spatialCounter<10):
-                spatialCounter=spatialCounter+1
-                geoLocation={"location":location, "RI":  searchResult['_source']['ResearchInfrastructure'][0]}
+            location = re.sub(r'[^A-Za-z0-9 ]+', '', potentialocation)
+            if (location != "") and (location != "None") and (len(location) < 20) and (
+                    location not in LocationspatialCoverage) and (spatialCounter < 10):
+                spatialCounter = spatialCounter + 1
+                geoLocation = {"location": location, "RI": searchResult['_source']['ResearchInfrastructure'][0]}
                 LocationspatialCoverage.append(geoLocation)
 
-    #......................
-    ResearchInfrastructure=[]
-    spatialCoverage=[]
-    theme=[]
-    publisher=[]
-    measurementTechnique=[]
-    #......................
+    # ......................
+    ResearchInfrastructure = []
+    spatialCoverage = []
+    theme = []
+    publisher = []
+    measurementTechnique = []
+    # ......................
     for searchResult in result['aggregations']['ResearchInfrastructure']['buckets']:
-        if(searchResult['key']!="None" and searchResult['key']!="unknown" and searchResult['key']!="Unknown" and searchResult['key']!="Data" and searchResult['key']!="Unspecified" and searchResult['key']!="" and searchResult['key']!="N/A"):
-            RI={
-                'key':searchResult['key'],
+        if (searchResult['key'] != "None" and searchResult['key'] != "unknown" and searchResult['key'] != "Unknown" and
+                searchResult['key'] != "Data" and searchResult['key'] != "Unspecified" and searchResult['key'] != "" and
+                searchResult['key'] != "N/A"):
+            RI = {
+                'key': searchResult['key'],
                 'doc_count': searchResult['doc_count']
             }
-            ResearchInfrastructure.append (RI)
-    #......................
+            ResearchInfrastructure.append(RI)
+    # ......................
     for searchResult in result['aggregations']['spatialCoverage']['buckets']:
-        if(searchResult['key']!="None" and searchResult['key']!="unknown" and searchResult['key']!="Unknown" and searchResult['key']!="Data" and searchResult['key']!="Unspecified" and searchResult['key']!="N/A" and searchResult['key']!="" and ("ANE" not in searchResult['key']) and ("Belgian" not in searchResult['key']) and ("calculated BB" not in searchResult['key']) and int(searchResult['doc_count']>1)):
-            SC={
-                'key':searchResult['key'],
+        if (searchResult['key'] != "None" and searchResult['key'] != "unknown" and searchResult['key'] != "Unknown" and
+                searchResult['key'] != "Data" and searchResult['key'] != "Unspecified" and searchResult[
+                    'key'] != "N/A" and searchResult['key'] != "" and ("ANE" not in searchResult['key']) and (
+                        "Belgian" not in searchResult['key']) and ("calculated BB" not in searchResult['key']) and int(
+                        searchResult['doc_count'] > 1)):
+            SC = {
+                'key': searchResult['key'],
                 'doc_count': searchResult['doc_count']
             }
-            spatialCoverage.append (SC)
-        #......................
+            spatialCoverage.append(SC)
+        # ......................
     for searchResult in result['aggregations']['theme']['buckets']:
-        if(searchResult['key']!="None" and searchResult['key']!="unknown" and searchResult['key']!="Unknown" and searchResult['key']!="Data" and searchResult['key']!="Unspecified" and searchResult['key']!="N/A" and searchResult['key']!="" and int(searchResult['doc_count']>1)):
-            Th={
-                'key':searchResult['key'],
+        if (searchResult['key'] != "None" and searchResult['key'] != "unknown" and searchResult['key'] != "Unknown" and
+                searchResult['key'] != "Data" and searchResult['key'] != "Unspecified" and searchResult[
+                    'key'] != "N/A" and searchResult['key'] != "" and int(searchResult['doc_count'] > 1)):
+            Th = {
+                'key': searchResult['key'],
                 'doc_count': searchResult['doc_count']
             }
-            theme.append (Th)
-    #......................
+            theme.append(Th)
+    # ......................
     for searchResult in result['aggregations']['publisher']['buckets']:
-        if(searchResult['key']!="None" and searchResult['key']!="unknown" and searchResult['key']!="Unknown" and searchResult['key']!="Data" and searchResult['key']!="Unspecified" and searchResult['key']!="N/A" and searchResult['key']!="" and int(searchResult['doc_count']>1 )):
-            Pub={
-                'key':searchResult['key'],
+        if (searchResult['key'] != "None" and searchResult['key'] != "unknown" and searchResult['key'] != "Unknown" and
+                searchResult['key'] != "Data" and searchResult['key'] != "Unspecified" and searchResult[
+                    'key'] != "N/A" and searchResult['key'] != "" and int(searchResult['doc_count'] > 1)):
+            Pub = {
+                'key': searchResult['key'],
                 'doc_count': searchResult['doc_count']
             }
-            publisher.append (Pub)
-    #......................
+            publisher.append(Pub)
+    # ......................
     for searchResult in result['aggregations']['measurementTechnique']['buckets']:
-        if(searchResult['key']!="None" and searchResult['key']!="unknown" and searchResult['key']!="Unknown" and searchResult['key']!="Data" and searchResult['key']!="Unspecified" and searchResult['key']!="N/A" and searchResult['key']!="" and int(searchResult['doc_count']>1 )):
-            meT={
-                'key':searchResult['key'],
+        if (searchResult['key'] != "None" and searchResult['key'] != "unknown" and searchResult['key'] != "Unknown" and
+                searchResult['key'] != "Data" and searchResult['key'] != "Unspecified" and searchResult[
+                    'key'] != "N/A" and searchResult['key'] != "" and int(searchResult['doc_count'] > 1)):
+            meT = {
+                'key': searchResult['key'],
                 'doc_count': searchResult['doc_count']
             }
-            measurementTechnique.append (meT)
-    #......................
-    facets={
-        'ResearchInfrastructure':ResearchInfrastructure,
-        'spatialCoverage':spatialCoverage,
-        'theme':theme,
-        'publisher':publisher,
-        'measurementTechnique':measurementTechnique
+            measurementTechnique.append(meT)
+    # ......................
+    facets = {
+        'ResearchInfrastructure': ResearchInfrastructure,
+        'spatialCoverage': spatialCoverage,
+        'theme': theme,
+        'publisher': publisher,
+        'measurementTechnique': measurementTechnique
     }
 
-    #envri-statics
-    #print("Got %d Hits:" % result['hits']['total']['value'])
-    #return JsonResponse(result, safe=True, json_dumps_params={'ensure_ascii': False})
+    # envri-statics
+    # print("Got %d Hits:" % result['hits']['total']['value'])
+    # return JsonResponse(result, safe=True, json_dumps_params={'ensure_ascii': False})
 
-    numHits=result['hits']['total']['value']
+    numHits = result['hits']['total']['value']
 
-    upperBoundPage=round(np.ceil(numHits/10)+1)
-    if(upperBoundPage>10):
-        upperBoundPage=11
+    upperBoundPage = round(np.ceil(numHits / 10) + 1)
+    if (upperBoundPage > 10):
+        upperBoundPage = 11
 
-    result= {
-        "facets":facets,
-        "results":lstResults,
+    result = {
+        "facets": facets,
+        "results": lstResults,
         "NumberOfHits": numHits,
-        "page_range": range(1,upperBoundPage),
-        "cur_page": (page/10+1),
-        "searchTerm":term,
-        "functionList": getAllfunctionList(request),
-        "spatialCoverage":LocationspatialCoverage
+        "page_range": range(1, upperBoundPage),
+        "cur_page": (page / 10 + 1),
+        "searchTerm": term,
+        "functionList": get_all_function_list(request),
+        "spatialCoverage": LocationspatialCoverage
     }
     return result
-#-----------------------------------------------------------------------------------------------------------------------
+
+
+# -----------------------------------------------------------------------------------------------------------------------
 def synonyms(term):
     response = requests.get('https://www.thesaurus.com/browse/{}'.format(term))
     soup = BeautifulSoup(response.text, 'html.parser')
     soup.find('section', {'class': 'css-191l5o0-ClassicContentCard e1qo4u830'})
     return [span.text for span in soup.findAll('a', {'class': 'css-1kg1yv8 eh475bn0'})]
-#-----------------------------------------------------------------------------------------------------------------------
-def potentialSearchTerm(term):
-    alternativeSearchTerm=""
+
+
+# -----------------------------------------------------------------------------------------------------------------------
+def potential_search_term(term):
+    alternative_search_term = ""
 
     spell = SpellChecker()
-    searchTerm=term.split()
-    alternativeSearchTerm=""
-    for sTerm in searchTerm:
-        alterWord=spell.correction(sTerm)
-        if alterWord:
-            alternativeSearchTerm= alternativeSearchTerm+" "+alterWord
+    search_term = term.split()
+    alternative_search_term = ""
+    for sTerm in search_term:
+        alter_word = spell.correction(sTerm)
+        if alter_word:
+            alternative_search_term = alternative_search_term + " " + alter_word
 
-    alternativeSearchTerm=alternativeSearchTerm.rstrip()
-    alternativeSearchTerm=alternativeSearchTerm.lstrip()
+    alternative_search_term = alternative_search_term.rstrip()
+    alternative_search_term = alternative_search_term.lstrip()
 
-    if alternativeSearchTerm==term:
-        alternativeSearchTerm=""
-        for sTerm in searchTerm:
-            syn=synonyms(sTerm)
-            if len(syn)>0:
-                alterWord=syn[0]
-                alternativeSearchTerm= alternativeSearchTerm+" "+alterWord
+    if alternative_search_term == term:
+        alternative_search_term = ""
+        for sTerm in search_term:
+            syn = synonyms(sTerm)
+            if len(syn) > 0:
+                alter_word = syn[0]
+                alternative_search_term = alternative_search_term + " " + alter_word
 
-    alternativeSearchTerm=alternativeSearchTerm.rstrip()
-    alternativeSearchTerm=alternativeSearchTerm.lstrip()
+    alternative_search_term = alternative_search_term.rstrip()
+    alternative_search_term = alternative_search_term.lstrip()
 
-    return alternativeSearchTerm
-#----------------------------------------------------------------------------------------
+    return alternative_search_term
+
+
+# ----------------------------------------------------------------------------------------
 def rest(request):
     try:
         term = request.GET['term']
-        term=term.rstrip()
-        term=term.lstrip()
+        term = term.rstrip()
+        term = term.lstrip()
     except:
         term = ''
     try:
@@ -370,12 +399,13 @@ def rest(request):
     except:
         abstract = '*'
 
-
-    result = esearch(all_fields=term, year_from=year_from, year_to=year_to, lon=lon,
-                     lat=lat, station=station.lower(), genre=genre.lower(), author=author.lower(),
-                     distributor=distributor.lower(),
-                     keywords=keywords.lower(), abstract=abstract.lower())
+    result = es_search(all_fields=term, year_from=year_from, year_to=year_to, lon=lon,
+                       lat=lat, station=station.lower(), genre=genre.lower(), author=author.lower(),
+                       distributor=distributor.lower(),
+                       keywords=keywords.lower(), abstract=abstract.lower())
     return JsonResponse(result, safe=True, json_dumps_params={'ensure_ascii': False})
+
+
 # -------------------------------------------------------------------------
 def home(request):
     # index_elastic()
@@ -383,14 +413,17 @@ def home(request):
     # context['form'] = SelectionForm()
     # context['result'] = SelectionForm.fields
     return render(request, "home.html", context)
-#----------------------------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------------------------
 def result(request):
     context = {}
     # context['result'] = SelectionForm()
     return render(request, "result.html")
+
+
 # -------------------------------------------------------------------------
 def search_index(request):
-    results = []
     keywords_term = ""
     abstract_term = ""
     all_fields_term = ""
@@ -434,28 +467,30 @@ def search_index(request):
 
     # print(search_term)
     # results = esearch(keywords = keywords_term, abstract=abstract_term, all_terms = all_fields_term)
-    results = esearch(keywords=keywords_term,
-                      abstract=abstract_term,
-                      all_fields=all_fields_term,
-                      year_from=year_from_term,
-                      year_to=year_to_term)
+    results = es_search(keywords=keywords_term,
+                        abstract=abstract_term,
+                        all_fields=all_fields_term,
+                        year_from=year_from_term,
+                        year_to=year_to_term)
 
     # print(results)
     context = {'results': results, 'count': len(results), 'search_term': search_term}
     return render(request, 'search.html', context)
+
+
 # ----------------------------------------------------------------
-def esearch(keywords="",
-            abstract="",
-            all_fields="",
-            year_from="",
-            year_to="",
-            lon="",
-            lat="",
-            station="",
-            genre="",
-            author="",
-            distributor="",
-            ):
+def es_search(keywords="",
+              abstract="",
+              all_fields="",
+              year_from="",
+              year_to="",
+              lon="",
+              lat="",
+              station="",
+              genre="",
+              author="",
+              distributor="",
+              ):
     client = es
     if all_fields == "*":
         filter_type_all_fields = "wildcard"
@@ -545,7 +580,8 @@ def esearch(keywords="",
     search = get_results_rest(response)
     return search
 
-#----------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------------------
 
 def get_results_rest(response):
     results = {}
@@ -567,7 +603,8 @@ def get_results_rest(response):
         results[hit.identifier] = result
     return results
 
-#----------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------------------
 def get_results(response):
     results = []
     for hit in response:
@@ -575,15 +612,17 @@ def get_results(response):
         results.append(result_tuple)
     return results
 
-#-----------------------------------------------------------------------------------------------------------------------
-def getAllfunctionList(request):
+
+# -----------------------------------------------------------------------------------------------------------------------
+def get_all_function_list(request):
     if not 'BasketURLs' in request.session or not request.session['BasketURLs']:
         request.session['BasketURLs'] = []
     if not 'MyBasket' in request.session or not request.session['MyBasket']:
         request.session['MyBasket'] = []
 
-    functionList=""
+    function_list = ""
     saved_list = request.session['MyBasket']
     for item in saved_list:
-        functionList= functionList+r"modifyCart({'operation':'add','type':'"+item['type']+"','title':'"+item['title']+"','url':'"+item['url']+"','id':'"+item['id']+"' });"
-    return functionList
+        function_list = function_list + r"modifyCart({'operation':'add','type':'" + item['type'] + "','title':'" + item[
+            'title'] + "','url':'" + item['url'] + "','id':'" + item['id'] + "' });"
+    return function_list
