@@ -255,9 +255,7 @@ aggregares = {
 }
 
 
-def uploadFromJsonStream(request):
-    # libpath="/home/siamak/res (1).json"
-    libpath = "/home/siamak/Downloads/res (1).json"
+def upload_from_json_stream(request, libpath=None):
     title_txt = []
     organization_ss = []
     created_ss = []
@@ -298,7 +296,7 @@ def uploadFromJsonStream(request):
                     "File_Size_ss": File_Size_ss,
                     "_text_": _text_
                 }
-                saveRecord(doc)
+                save_record(doc)
 
                 title_txt.clear()
                 organization_ss.clear()
@@ -353,7 +351,7 @@ def uploadFromJsonStream(request):
 
 
 # -----------------------------------------------------------------------------------------------------------------------
-def saveRecord(doc):
+def save_record(doc):
     es = Elasticsearch(elasticsearch_url, http_auth=[elasticsearch_username, elasticsearch_password])
     index = Index('webcontents', es)
 
@@ -395,7 +393,7 @@ def saveRecord(doc):
     if "title_txt" in doc:
         title_txt.clear()
         for txt in doc["title_txt"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in title_txt:
                 title_txt.append(txt)
     else:
@@ -404,7 +402,7 @@ def saveRecord(doc):
     if "organization_ss" in doc:
         organization_ss.clear()
         for txt in doc["organization_ss"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in organization_ss:
                 organization_ss.append(txt)
     else:
@@ -413,7 +411,7 @@ def saveRecord(doc):
     if "created_ss" in doc:
         created_ss.clear()
         for txt in doc["created_ss"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in created_ss:
                 created_ss.append(dateutil.parser.parse(txt))
     else:
@@ -422,7 +420,7 @@ def saveRecord(doc):
     if "content_type_ss" in doc:
         content_type_ss.clear()
         for txt in doc["content_type_ss"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in content_type_ss:
                 content_type_ss.append(txt)
     else:
@@ -431,7 +429,7 @@ def saveRecord(doc):
     if "file_modified_dt" in doc:
         file_modified_dt.clear()
         for txt in doc["file_modified_dt"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in file_modified_dt:
                 file_modified_dt.append(dateutil.parser.parse(txt))
     else:
@@ -440,7 +438,7 @@ def saveRecord(doc):
     if "author_ss" in doc:
         author_ss.clear()
         for txt in doc["author_ss"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in author_ss:
                 author_ss.append(txt)
     else:
@@ -449,7 +447,7 @@ def saveRecord(doc):
     if "producer_ss" in doc:
         producer_ss.clear()
         for txt in doc["producer_ss"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in producer_ss:
                 producer_ss.append(txt)
     else:
@@ -458,7 +456,7 @@ def saveRecord(doc):
     if "language_s" in doc:
         language_s.clear()
         for txt in doc["language_s"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in language_s:
                 language_s.append(txt)
     else:
@@ -467,7 +465,7 @@ def saveRecord(doc):
     if "filename_extension_s" in doc:
         filename_extension_s.clear()
         for txt in doc["filename_extension_s"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in filename_extension_s:
                 filename_extension_s.append(txt)
     else:
@@ -476,7 +474,7 @@ def saveRecord(doc):
     if "person_ss" in doc:
         person_ss.clear()
         for txt in doc["person_ss"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in person_ss:
                 person_ss.append(txt)
     else:
@@ -485,7 +483,7 @@ def saveRecord(doc):
     if "location_ss" in doc:
         location_ss.clear()
         for txt in doc["location_ss"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in location_ss:
                 location_ss.append(txt)
     else:
@@ -503,7 +501,7 @@ def saveRecord(doc):
     if "dc_format_ss" in doc:
         dc_format_ss.clear()
         for txt in doc["dc_format_ss"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in dc_format_ss:
                 dc_format_ss.append(txt)
     else:
@@ -512,7 +510,7 @@ def saveRecord(doc):
     if "dc_title_ss" in doc:
         dc_title_ss.clear()
         for txt in doc["dc_title_ss"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in dc_title_ss:
                 dc_title_ss.append(txt)
     else:
@@ -521,7 +519,7 @@ def saveRecord(doc):
     if "File_Size_ss" in doc:
         File_Size_ss.clear()
         for txt in doc["File_Size_ss"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in File_Size_ss:
                 File_Size_ss.append(txt)
     else:
@@ -530,7 +528,7 @@ def saveRecord(doc):
     if "_text_" in doc:
         _text_.clear()
         for txt in doc["_text_"]:
-            txt = textCleansing(txt)
+            txt = text_cleansing(txt)
             if txt and txt not in _text_:
                 _text_.append(txt)
     else:
@@ -552,24 +550,24 @@ def saveRecord(doc):
         "file_formats": dc_format_ss,
         "file_size": File_Size_ss,
         "text": _text_,
-        "ResearchInfrastructure": getResearchInfrastructure(id[0])
+        "ResearchInfrastructure": get_research_infrastructure(id[0])
     }
     res = es.index(index="webcontents", id=id, body=webFeatures)
     es.indices.refresh(index="webcontents")
 
 
 # ----------------------------------------------------------------------------------------------------------------------- envri-search-engine
-def getResearchInfrastructure(url):
-    lstRI = []
+def get_research_infrastructure(url):
+    lst_ri = []
     for RI in ResearchInfrastructures:
         if RI in url:
-            if (ResearchInfrastructures[RI]['acronym'] not in lstRI):
-                lstRI.append(ResearchInfrastructures[RI]['acronym'])
-    return lstRI
+            if ResearchInfrastructures[RI]['acronym'] not in lst_ri:
+                lst_ri.append(ResearchInfrastructures[RI]['acronym'])
+    return lst_ri
 
 
 # ----------------------------------------------------------------------------------------------------------------------- envri-search-engine
-def textCleansing(txt):
+def text_cleansing(txt):
     if type(txt) == str:
         res = isinstance(txt, str)
         if res:
@@ -582,28 +580,22 @@ def textCleansing(txt):
 # ----------------------------------------------------------------------------------------------------------------------- envri-search-engine
 def aggregates(request):
     print("indexing...")
-
-    response_data = {}
-    response_data['result'] = ""
-    response_data['message'] = 'The indexing process of the dataset repository has been initiated!'
-
+    response_data = {'result': "", 'message': 'The indexing process of the dataset repository has been initiated!'}
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
 # -----------------------------------------------------------------------------------------------------------------------
-def genericsearch(request):
+def generic_search(request):
     try:
         term = request.GET['term']
         term = term.rstrip()
         term = term.lstrip()
     except:
         term = ''
-
     try:
         page = request.GET['page']
     except:
         page = 0
-
     try:
         searchtype = request.GET['searchtype']
     except:
@@ -624,62 +616,58 @@ def genericsearch(request):
     except:
         suggestedSearchTerm = ''
 
-    searchResults = getSearchResults(request, facet, filter, searchtype, page, term)
+    search_results = get_search_results(request, facet, filter, searchtype, page, term)
 
-    if (suggestedSearchTerm != ""):
-        searchResults["suggestedSearchTerm"] = ""
+    if suggestedSearchTerm != "":
+        search_results["suggestedSearchTerm"] = ""
     else:
         suggestedSearchTerm = ""
-        if searchResults["NumberOfHits"] == 0:
+        if search_results["NumberOfHits"] == 0:
             suggestedSearchTerm = potential_search_term(term)
-            searchResults = getSearchResults(request, facet, filter, searchtype, page, "*")
-            searchResults["NumberOfHits"] = 0
-            searchResults["searchTerm"] = term
-            searchResults["suggestedSearchTerm"] = suggestedSearchTerm
+            search_results = get_search_results(request, facet, filter, searchtype, page, "*")
+            search_results["NumberOfHits"] = 0
+            search_results["searchTerm"] = term
+            search_results["suggestedSearchTerm"] = suggestedSearchTerm
 
     if searchtype == 'imagesearch':
-        htmlrender = 'imagesearch_results.html'
+        html_render = 'imagesearch_results.html'
     else:
-        htmlrender = 'webcontent_results.html'
+        html_render = 'webcontent_results.html'
 
-    return render(request, htmlrender, searchResults)
+    return render(request, html_render, search_results)
 
 
 # -----------------------------------------------------------------------------------------------------------------------
 def potential_search_term(term):
-    alternativeSearchTerm = ""
-
     spell = SpellChecker()
-    searchTerm = term.split()
-    alternativeSearchTerm = ""
-    for sTerm in searchTerm:
-        alterWord = spell.correction(sTerm)
-        if (alterWord != ""):
-            alternativeSearchTerm = alternativeSearchTerm + " " + alterWord
+    search_term = term.split()
+    alternative_search_term = ""
+    for sTerm in search_term:
+        alter_word = spell.correction(sTerm)
+        if alter_word != "":
+            alternative_search_term = alternative_search_term + " " + alter_word
 
-    alternativeSearchTerm = alternativeSearchTerm.rstrip()
-    alternativeSearchTerm = alternativeSearchTerm.lstrip()
+    alternative_search_term = alternative_search_term.rstrip()
+    alternative_search_term = alternative_search_term.lstrip()
 
-    if alternativeSearchTerm == term:
-        alternativeSearchTerm = ""
-        for sTerm in searchTerm:
+    if alternative_search_term == term:
+        alternative_search_term = ""
+        for sTerm in search_term:
             syn = synonyms(sTerm)
             if len(syn) > 0:
-                alterWord = syn[0]
-                alternativeSearchTerm = alternativeSearchTerm + " " + alterWord
+                alter_word = syn[0]
+                alternative_search_term = alternative_search_term + " " + alter_word
 
-    alternativeSearchTerm = alternativeSearchTerm.rstrip()
-    alternativeSearchTerm = alternativeSearchTerm.lstrip()
+    alternative_search_term = alternative_search_term.rstrip()
+    alternative_search_term = alternative_search_term.lstrip()
 
-    return alternativeSearchTerm
+    return alternative_search_term
 
 
 # -----------------------------------------------------------------------------------------------------------------------
 
-def getSearchResults(request, facet, filter, searchtype, page, term):
+def get_search_results(request, facet, filter, searchtype, page, term):
     es = Elasticsearch(elasticsearch_url, http_auth=[elasticsearch_username, elasticsearch_password])
-    index = Index('webcontents', es)
-
     if filter != "" and facet != "":
         saved_list = request.session['filters']
         saved_list.append({"term": {facet + ".keyword": filter}})
@@ -690,7 +678,6 @@ def getSearchResults(request, facet, filter, searchtype, page, term):
         request.session['filters'] = []
 
     page = (int(page) - 1) * 10
-    result = {}
     if term == "*" or term == "top10":
         result = es.search(
             index="webcontents",
@@ -714,7 +701,6 @@ def getSearchResults(request, facet, filter, searchtype, page, term):
             }
         )
     else:
-        user_request = "some_param"
         query_body = {
             "from": page,
             "size": 10,
@@ -724,7 +710,7 @@ def getSearchResults(request, facet, filter, searchtype, page, term):
                         "multi_match": {
                             "query": term,
                             "fields": ["title", "pageContetnts", "organizations", "topics",
-                                       "people", "workOfArt", "files", "locations", "dates",
+                                       "people", "work_of_art", "files", "locations", "dates",
                                        "researchInfrastructure"],
                             "type": "best_fields",
                             "minimum_should_match": "100%"
@@ -741,88 +727,88 @@ def getSearchResults(request, facet, filter, searchtype, page, term):
         }
         result = es.search(index="webcontents", body=query_body)
 
-    lstResults = []
-    lstImageFilename = []
-    lstImageURL = []
+    lst_results = []
+    lst_image_filename = []
+    lst_image_url = []
 
-    for searchResult in result['hits']['hits']:
-        lstResults.append(searchResult['_source'])
-        if (searchtype == "imagesearch"):
-            url = searchResult['_source']['url']
-            ResearchInfrastructure = searchResult['_source']['researchInfrastructure']
-            for img in searchResult['_source']['images']:
+    for search_result in result['hits']['hits']:
+        lst_results.append(search_result['_source'])
+        if searchtype == "imagesearch":
+            url = search_result['_source']['url']
+            research_infrastructure = search_result['_source']['researchInfrastructure']
+            for img in search_result['_source']['images']:
                 a = urlparse(img)
                 filename = os.path.basename(a.path)
                 extension = os.path.splitext(filename)[1]
-                filenameWithoutExt = os.path.splitext(filename)[0]
-                if filename not in lstImageFilename:
-                    lstImageFilename.append(filename)
-                    image = {'imageURL': img, 'imageWebpage': url[0], 'filename': filenameWithoutExt,
-                             'extension': extension, 'ResearchInfrastructure': ResearchInfrastructure[0]}
-                    lstImageURL.append(image)
+                filename_without_ext = os.path.splitext(filename)[0]
+                if filename not in lst_image_filename:
+                    lst_image_filename.append(filename)
+                    image = {'imageURL': img, 'imageWebpage': url[0], 'filename': filename_without_ext,
+                             'extension': extension, 'research_infrastructure': research_infrastructure[0]}
+                    lst_image_url.append(image)
     # ......................
     files = []
     locations = []
     people = []
     organizations = []
-    workOfArt = []
+    work_of_art = []
     products = []
-    ResearchInfrastructure = []
+    research_infrastructure = []
     # ......................
-    for searchResult in result['aggregations']['ResearchInfrastructure']['buckets']:
-        if (searchResult['key'] != "None" and searchResult['key'] != "unknown" and searchResult['key'] != "" and
-                searchResult['key'] != "KB"):
-            RI = {
-                'key': searchResult['key'],
-                'doc_count': searchResult['doc_count']
+    for search_result in result['aggregations']['research_infrastructure']['buckets']:
+        if (search_result['key'] != "None" and search_result['key'] != "unknown" and search_result['key'] != "" and
+                search_result['key'] != "KB"):
+            ri = {
+                'key': search_result['key'],
+                'doc_count': search_result['doc_count']
             }
-            ResearchInfrastructure.append(RI)
+            research_infrastructure.append(ri)
     # ......................
-    for searchResult in result['aggregations']['locations']['buckets']:
-        if (searchResult['key'] != "None" and searchResult['key'] != "unknown" and searchResult['key'] != ""):
+    for search_result in result['aggregations']['locations']['buckets']:
+        if search_result['key'] != "None" and search_result['key'] != "unknown" and search_result['key'] != "":
             loc = {
-                'key': searchResult['key'],
-                'doc_count': searchResult['doc_count']
+                'key': search_result['key'],
+                'doc_count': search_result['doc_count']
             }
             locations.append(loc)
     # ......................
-    for searchResult in result['aggregations']['people']['buckets']:
-        if (searchResult['key'] != "None" and searchResult['key'] != "unknown" and searchResult['key'] != ""):
+    for search_result in result['aggregations']['people']['buckets']:
+        if search_result['key'] != "None" and search_result['key'] != "unknown" and search_result['key'] != "":
             prod = {
-                'key': searchResult['key'],
-                'doc_count': searchResult['doc_count']
+                'key': search_result['key'],
+                'doc_count': search_result['doc_count']
             }
             people.append(prod)
     # ......................
-    for searchResult in result['aggregations']['organizations']['buckets']:
-        if (searchResult['key'] != "None" and searchResult['key'] != "unknown" and searchResult['key'] != ""):
+    for search_result in result['aggregations']['organizations']['buckets']:
+        if search_result['key'] != "None" and search_result['key'] != "unknown" and search_result['key'] != "":
             org = {
-                'key': searchResult['key'],
-                'doc_count': searchResult['doc_count']
+                'key': search_result['key'],
+                'doc_count': search_result['doc_count']
             }
             organizations.append(org)
     # ......................
-    for searchResult in result['aggregations']['products']['buckets']:
-        if (searchResult['key'] != "None" and searchResult['key'] != "unknown" and searchResult['key'] != ""):
+    for search_result in result['aggregations']['products']['buckets']:
+        if search_result['key'] != "None" and search_result['key'] != "unknown" and search_result['key'] != "":
             pers = {
-                'key': searchResult['key'],
-                'doc_count': searchResult['doc_count']
+                'key': search_result['key'],
+                'doc_count': search_result['doc_count']
             }
             products.append(pers)
     # ......................
-    for searchResult in result['aggregations']['workOfArt']['buckets']:
-        if (searchResult['key'] != "None" and searchResult['key'] != "unknown" and searchResult['key'] != ""):
+    for search_result in result['aggregations']['work_of_art']['buckets']:
+        if search_result['key'] != "None" and search_result['key'] != "unknown" and search_result['key'] != "":
             auth = {
-                'key': searchResult['key'],
-                'doc_count': searchResult['doc_count']
+                'key': search_result['key'],
+                'doc_count': search_result['doc_count']
             }
-            workOfArt.append(auth)
+            work_of_art.append(auth)
     # ......................
-    for searchResult in result['aggregations']['files']['buckets']:
-        if (searchResult['key'] != "None" and searchResult['key'] != "unknown" and searchResult['key'] != ""):
+    for search_result in result['aggregations']['files']['buckets']:
+        if search_result['key'] != "None" and search_result['key'] != "unknown" and search_result['key'] != "":
             ext = {
-                'key': searchResult['key'],
-                'doc_count': searchResult['doc_count']
+                'key': search_result['key'],
+                'doc_count': search_result['doc_count']
             }
             files.append(ext)
     # ......................
@@ -830,30 +816,30 @@ def getSearchResults(request, facet, filter, searchtype, page, term):
     facets = {
         "files": files,
         "locations": locations,
-        "workOfArt": workOfArt,
+        "work_of_art": work_of_art,
         "organizations": organizations,
         "people": people,
         "products": products,
-        "ResearchInfrastructure": ResearchInfrastructure
+        "research_infrastructure": research_infrastructure
     }
     # envri-statics
     # print("Got %d Hits:" % result['hits']['total']['value'])
     # return JsonResponse(result, safe=True, json_dumps_params={'ensure_ascii': False})
-    numHits = result['hits']['total']['value']
+    num_hits = result['hits']['total']['value']
 
-    upperBoundPage = round(np.ceil(numHits / 10) + 1)
-    if (upperBoundPage > 10):
-        upperBoundPage = 11
+    upper_bound_page = round(np.ceil(num_hits / 10) + 1)
+    if upper_bound_page > 10:
+        upper_bound_page = 11
 
     results = {
         "facets": facets,
-        "results": lstResults,
-        "NumberOfHits": numHits,
-        "page_range": range(1, upperBoundPage),
+        "results": lst_results,
+        "NumberOfHits": num_hits,
+        "page_range": range(1, upper_bound_page),
         "cur_page": (page / 10 + 1),
         "searchTerm": term,
         "functionList": getAllfunctionList(request),
-        "lstImageURL": lstImageURL
+        "lst_image_url": lst_image_url
     }
 
     return results
@@ -979,7 +965,7 @@ def addToBasket(request):
 
 
 # -----------------------------------------------------------------------------------------------------------------------
-def sendFeedback(request):
+def send_feedback(request):
     is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
     if request.method == 'POST':
         data = json.load(request)
