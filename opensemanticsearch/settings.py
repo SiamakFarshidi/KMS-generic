@@ -1,4 +1,4 @@
-"""
+'''
 Django settings for opensemanticsearch project.
 
 For more information on this file, see
@@ -6,19 +6,20 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
-"""
+'''
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from django.core.management import utils
+import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Add to python path so includes of ETL modules will work in Django environment
-import sys
 
-sys.path.append("/usr/lib/python3/dist-packages")
-sys.path.append("/usr/lib/python3/dist-packages/opensemanticetl")
+
+sys.path.append('/usr/lib/python3/dist-packages')
+sys.path.append('/usr/lib/python3/dist-packages/opensemanticetl')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -145,10 +146,14 @@ REST_FRAMEWORK = {
 }
 
 # File Based
-SESSION_ENGINE = "django.contrib.sessions.backends.file"
+SESSION_ENGINE = 'django.contrib.sessions.backends.file'
 
 # Works In Combination With  Current Cache and Database, fairly persistant
-SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 # Cookie Based, Browser Clearing Will lose it.
-SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django_base_url.context_processors.base_url',
+)
+BASE_URL = 'http://host/'

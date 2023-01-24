@@ -641,22 +641,22 @@ def generic_search(request):
 def potential_search_term(term):
     spell = SpellChecker()
     search_term = term.split()
-    alternative_search_term = ""
+    alternative_search_term = ''
     for sTerm in search_term:
         alter_word = spell.correction(sTerm)
-        if alter_word != "":
-            alternative_search_term = alternative_search_term + " " + alter_word
+        if alter_word:
+            alternative_search_term = alternative_search_term + ' ' + alter_word
 
     alternative_search_term = alternative_search_term.rstrip()
     alternative_search_term = alternative_search_term.lstrip()
 
     if alternative_search_term == term:
-        alternative_search_term = ""
+        alternative_search_term = ''
         for sTerm in search_term:
             syn = synonyms(sTerm)
             if len(syn) > 0:
                 alter_word = syn[0]
-                alternative_search_term = alternative_search_term + " " + alter_word
+                alternative_search_term = alternative_search_term + ' ' + alter_word
 
     alternative_search_term = alternative_search_term.rstrip()
     alternative_search_term = alternative_search_term.lstrip()
