@@ -101,7 +101,7 @@ def potentialSearchTerm(term):
     alternativeSearchTerm=""
     for sTerm in searchTerm:
         alterWord=spell.correction(sTerm)
-        if(alterWord!=""):
+        if alterWord:
             alternativeSearchTerm= alternativeSearchTerm+" "+alterWord
 
     alternativeSearchTerm=alternativeSearchTerm.rstrip()
