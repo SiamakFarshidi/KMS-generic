@@ -49,7 +49,8 @@ INSTALLED_APPS = (
     'webSearch',
     'webAPI',
     'accountManagement',
-    'DSS'
+    'DSS',
+    'django_baseurl'
 )
 
 MIDDLEWARE = (
@@ -76,6 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django_baseurl.context_processors.baseurl'
             ],
         },
     },
@@ -153,7 +155,3 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 # Cookie Based, Browser Clearing Will lose it.
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django_base_url.context_processors.base_url',
-)
-BASE_URL = 'http://host/'

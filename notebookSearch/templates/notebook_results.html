@@ -469,7 +469,7 @@ function modifyBasket(operation,type, title, url, id){
   }
   newEntitiy={'operation':operation,'type':type,'title':title,'url':url,'id':id };
   $.ajax({
-    url: '../webSearch/addToBasket',
+    url: '../{{ base_path }}/webSearch/addToBasket',
     type: "POST",
     dataType: "json",
     data: JSON.stringify(newEntitiy),

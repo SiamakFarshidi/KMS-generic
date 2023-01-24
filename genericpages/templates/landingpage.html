@@ -146,7 +146,7 @@
                                 <i class="ti-angle-down"></i>
                             </a>
                             <ul class="show-notification profile-notification">
-                                <li><a href="../accountManagement/login"><i class="ti-layout-sidebar-left"></i> Login </a> </li>
+                                <li><a href="../{{ base_path }}/accountManagement/login"><i class="ti-layout-sidebar-left"></i> Login </a> </li>
                             </ul>
                         </li>
                     </ul>
@@ -215,8 +215,7 @@ function search(searchBoxNum){
         queryParams.set("term", searchValue);
         queryParams.set("page", 1);
         // Replace current querystring with the new one.
-        window.location.replace("../webSearch/genericsearch?"+queryParams.toString());
-
+        window.location.replace("../{{ base_path }}/webSearch/genericsearch?"+queryParams.toString());
     }
 }
 //---------------------------------------------------------------------
@@ -261,7 +260,7 @@ function downloadCart(){
   newEntitiy={'operation':'download'};
 
   $.ajax({
-    url: '../webSearch/downloadCart',
+    url: '../{{ base_path }}/webSearch/downloadCart',
     type: "POST",
     dataType: "json",
     data: JSON.stringify(newEntitiy),
@@ -292,7 +291,7 @@ function modifyBasket(operation,type, title, url, id){
   }
   newEntitiy={'operation':operation,'type':type,'title':title,'url':url,'id':id };
   $.ajax({
-    url: '../webSearch/addToBasket',
+    url: '../{{ base_path }}/webSearch/addToBasket',
     type: "POST",
     dataType: "json",
     data: JSON.stringify(newEntitiy),

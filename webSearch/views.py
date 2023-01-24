@@ -725,7 +725,9 @@ def get_search_results(request, facet, filter, searchtype, page, term):
             },
             'aggs': aggregares
         }
+
         result = es.search(index='webcontents', body=query_body)
+
 
     lst_results = []
     lst_image_filename = []

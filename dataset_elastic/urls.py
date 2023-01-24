@@ -1,17 +1,29 @@
 from django.conf.urls import include
-from django.urls import re_path as url
+from django.urls import re_path
 from dataset_elastic import views,models
 from django.conf.urls.static import static
 
 
 urlpatterns = [
-	#url(r'^index', views.index, name='index'),
-    url(r'^home', views.home, name='home'),
-    url(r'^result', views.home, name='result'),
-    url(r'^search', views.search_index, name='search_index'),
-    url(r'^rest', views.rest, name='rest'),
-    url(r'^indexingpipeline', views.indexingpipeline, name='indexingpipeline'),
-    url(r'^genericsearch', views.genericsearch, name='genericsearch'),
-    url(r'^aggregates', views.aggregates, name='aggregates')
-
+	#re_path(r'^index', views.index, name='index'),
+    re_path(r'^home', views.home, name='home'),
+    re_path(r'^result', views.home, name='result'),
+    re_path(r'^search', views.search_index, name='search_index'),
+    re_path(r'^rest', views.rest, name='rest'),
+    re_path(r'^indexingpipeline', views.indexingpipeline, name='indexingpipeline'),
+    re_path(r'^genericsearch', views.genericsearch, name='genericsearch'),
+    re_path(r'^aggregates', views.aggregates, name='aggregates')
 ]
+
+
+# urlpatterns = [
+#     re_path(r'^someuri/', include([
+#             re_path(r'^home', views.home, name='home'),
+#             re_path(r'^result', views.home, name='result'),
+#             re_path(r'^search', views.search_index, name='search_index'),
+#             re_path(r'^rest', views.rest, name='rest'),
+#             re_path(r'^indexingpipeline', views.indexingpipeline, name='indexingpipeline'),
+#             re_path(r'^genericsearch', views.genericsearch, name='genericsearch'),
+#             re_path(r'^aggregates', views.aggregates, name='aggregates')
+#     ])),
+# ]
