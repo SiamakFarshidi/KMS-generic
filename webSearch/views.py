@@ -240,7 +240,7 @@ aggregares = {
             "size": 20,
         }
     },
-    "ResearchInfrastructure": {
+    'ResearchInfrastructure': {
         "terms": {
             "field": "researchInfrastructure.acronym.keyword",
             "size": 20,
@@ -550,7 +550,7 @@ def save_record(doc):
         "file_formats": dc_format_ss,
         "file_size": File_Size_ss,
         "text": _text_,
-        "ResearchInfrastructure": get_research_infrastructure(id[0])
+        'ResearchInfrastructure': get_research_infrastructure(id[0])
     }
     res = es.index(index="webcontents", id=id, body=webFeatures)
     es.indices.refresh(index="webcontents")
@@ -668,9 +668,9 @@ def potential_search_term(term):
 
 def get_search_results(request, facet, filter, searchtype, page, term):
     es = Elasticsearch(elasticsearch_url, http_auth=[elasticsearch_username, elasticsearch_password])
-    if filter != "" and facet != "":
+    if filter != '' and facet != '':
         saved_list = request.session['filters']
-        saved_list.append({"term": {facet + ".keyword": filter}})
+        saved_list.append({'term': {facet + '.keyword': filter}})
         request.session['filters'] = saved_list
     else:
         if 'filters' in request.session:
@@ -678,54 +678,54 @@ def get_search_results(request, facet, filter, searchtype, page, term):
         request.session['filters'] = []
 
     page = (int(page) - 1) * 10
-    if term == "*" or term == "top10":
+    if term == '*' or term == 'top10':
         result = es.search(
-            index="webcontents",
+            index='webcontents',
             body={
-                "from": page,
-                "size": 10,
+                'from': page,
+                'size': 10,
 
-                "query": {
-                    "bool": {
-                        "must": {
-                            "match_all": {}
+                'query': {
+                    'bool': {
+                        'must': {
+                            'match_all': {}
                         },
-                        "filter": {
-                            "bool": {
-                                "must": request.session.get('filters')
+                        'filter': {
+                            'bool': {
+                                'must': request.session.get('filters')
                             }
                         }
                     }
                 },
-                "aggs": aggregares
+                'aggs': aggregares
             }
         )
     else:
         query_body = {
-            "from": page,
-            "size": 10,
-            "query": {
-                "bool": {
-                    "must": {
-                        "multi_match": {
-                            "query": term,
-                            "fields": ["title", "pageContetnts", "organizations", "topics",
-                                       "people", "work_of_art", "files", "locations", "dates",
-                                       "researchInfrastructure"],
-                            "type": "best_fields",
-                            "minimum_should_match": "100%"
+            'from': page,
+            'size': 10,
+            'query': {
+                'bool': {
+                    'must': {
+                        'multi_match': {
+                            'query': term,
+                            'fields': ['title', 'pageContetnts', 'organizations', 'topics',
+                                       'people', 'workOfArt', 'files', 'locations', 'dates',
+                                       'ResearchInfrastructure'],
+                            'type': 'best_fields',
+                            'minimum_should_match': '100%'
                         }
                     },
-                    "filter": {
-                        "bool": {
-                            "must": request.session.get('filters')
+                    'filter': {
+                        'bool': {
+                            'must': request.session.get('filters')
                         }
                     }
                 }
             },
-            "aggs": aggregares
+            'aggs': aggregares
         }
-        result = es.search(index="webcontents", body=query_body)
+        result = es.search(index='webcontents', body=query_body)
 
     lst_results = []
     lst_image_filename = []
@@ -733,9 +733,9 @@ def get_search_results(request, facet, filter, searchtype, page, term):
 
     for search_result in result['hits']['hits']:
         lst_results.append(search_result['_source'])
-        if searchtype == "imagesearch":
+        if searchtype == 'imagesearch':
             url = search_result['_source']['url']
-            research_infrastructure = search_result['_source']['researchInfrastructure']
+            research_infrastructure = search_result['_source']['ResearchInfrastructure']
             for img in search_result['_source']['images']:
                 a = urlparse(img)
                 filename = os.path.basename(a.path)
@@ -744,7 +744,7 @@ def get_search_results(request, facet, filter, searchtype, page, term):
                 if filename not in lst_image_filename:
                     lst_image_filename.append(filename)
                     image = {'imageURL': img, 'imageWebpage': url[0], 'filename': filename_without_ext,
-                             'extension': extension, 'research_infrastructure': research_infrastructure[0]}
+                             'extension': extension, 'ResearchInfrastructure': research_infrastructure[0]}
                     lst_image_url.append(image)
     # ......................
     files = []
@@ -755,9 +755,9 @@ def get_search_results(request, facet, filter, searchtype, page, term):
     products = []
     research_infrastructure = []
     # ......................
-    for search_result in result['aggregations']['research_infrastructure']['buckets']:
-        if (search_result['key'] != "None" and search_result['key'] != "unknown" and search_result['key'] != "" and
-                search_result['key'] != "KB"):
+    for search_result in result['aggregations']['ResearchInfrastructure']['buckets']:
+        if (['key'] != 'None' and search_result['key'] != 'unknown' and search_result['key'] != '' and
+                search_result['key'] != 'KB'):
             ri = {
                 'key': search_result['key'],
                 'doc_count': search_result['doc_count']
@@ -765,7 +765,7 @@ def get_search_results(request, facet, filter, searchtype, page, term):
             research_infrastructure.append(ri)
     # ......................
     for search_result in result['aggregations']['locations']['buckets']:
-        if search_result['key'] != "None" and search_result['key'] != "unknown" and search_result['key'] != "":
+        if search_result['key'] != 'None' and search_result['key'] != 'unknown' and search_result['key'] != '':
             loc = {
                 'key': search_result['key'],
                 'doc_count': search_result['doc_count']
@@ -773,7 +773,7 @@ def get_search_results(request, facet, filter, searchtype, page, term):
             locations.append(loc)
     # ......................
     for search_result in result['aggregations']['people']['buckets']:
-        if search_result['key'] != "None" and search_result['key'] != "unknown" and search_result['key'] != "":
+        if search_result['key'] != 'None' and search_result['key'] != 'unknown' and search_result['key'] != '':
             prod = {
                 'key': search_result['key'],
                 'doc_count': search_result['doc_count']
@@ -781,7 +781,7 @@ def get_search_results(request, facet, filter, searchtype, page, term):
             people.append(prod)
     # ......................
     for search_result in result['aggregations']['organizations']['buckets']:
-        if search_result['key'] != "None" and search_result['key'] != "unknown" and search_result['key'] != "":
+        if search_result['key'] != 'None' and search_result['key'] != 'unknown' and search_result['key'] != '':
             org = {
                 'key': search_result['key'],
                 'doc_count': search_result['doc_count']
@@ -789,15 +789,15 @@ def get_search_results(request, facet, filter, searchtype, page, term):
             organizations.append(org)
     # ......................
     for search_result in result['aggregations']['products']['buckets']:
-        if search_result['key'] != "None" and search_result['key'] != "unknown" and search_result['key'] != "":
+        if search_result['key'] != 'None' and search_result['key'] != 'unknown' and search_result['key'] != '':
             pers = {
                 'key': search_result['key'],
                 'doc_count': search_result['doc_count']
             }
             products.append(pers)
     # ......................
-    for search_result in result['aggregations']['work_of_art']['buckets']:
-        if search_result['key'] != "None" and search_result['key'] != "unknown" and search_result['key'] != "":
+    for search_result in result['aggregations']['workOfArt']['buckets']:
+        if search_result['key'] != 'None' and search_result['key'] != 'unknown' and search_result['key'] != '':
             auth = {
                 'key': search_result['key'],
                 'doc_count': search_result['doc_count']
@@ -805,7 +805,7 @@ def get_search_results(request, facet, filter, searchtype, page, term):
             work_of_art.append(auth)
     # ......................
     for search_result in result['aggregations']['files']['buckets']:
-        if search_result['key'] != "None" and search_result['key'] != "unknown" and search_result['key'] != "":
+        if search_result['key'] != 'None' and search_result['key'] != 'unknown' and search_result['key'] != '':
             ext = {
                 'key': search_result['key'],
                 'doc_count': search_result['doc_count']
@@ -814,16 +814,16 @@ def get_search_results(request, facet, filter, searchtype, page, term):
     # ......................
 
     facets = {
-        "files": files,
-        "locations": locations,
-        "work_of_art": work_of_art,
-        "organizations": organizations,
-        "people": people,
-        "products": products,
-        "research_infrastructure": research_infrastructure
+        'files': files,
+        'locations': locations,
+        'workOfArt': work_of_art,
+        'organizations': organizations,
+        'people': people,
+        'products': products,
+        'research_infrastructure': research_infrastructure
     }
     # envri-statics
-    # print("Got %d Hits:" % result['hits']['total']['value'])
+    # print('Got %d Hits:' % result['hits']['total']['value'])
     # return JsonResponse(result, safe=True, json_dumps_params={'ensure_ascii': False})
     num_hits = result['hits']['total']['value']
 
@@ -832,14 +832,14 @@ def get_search_results(request, facet, filter, searchtype, page, term):
         upper_bound_page = 11
 
     results = {
-        "facets": facets,
-        "results": lst_results,
-        "NumberOfHits": num_hits,
-        "page_range": range(1, upper_bound_page),
-        "cur_page": (page / 10 + 1),
-        "searchTerm": term,
-        "functionList": getAllfunctionList(request),
-        "lst_image_url": lst_image_url
+        'facets': facets,
+        'results': lst_results,
+        'NumberOfHits': num_hits,
+        'page_range': range(1, upper_bound_page),
+        'cur_page': (page / 10 + 1),
+        'searchTerm': term,
+        'functionList': getAllfunctionList(request),
+        'lst_image_url': lst_image_url
     }
 
     return results
